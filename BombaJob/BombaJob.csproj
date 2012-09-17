@@ -107,6 +107,7 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Readme.markdown" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\ApplicationIcon.png">
