@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
+  <App xmlns="" ProductID="{2f38e193-67ef-43e9-a236-a820d9a7c51d}" Title="BombaJob" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="supudo.net" Description="Official app for BombaJob.bg" Publisher="BombaJob">
+    <IconPath IsRelative="true" IsResource="false">Images\ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_GAMERSERVICES" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+      <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_MEDIALIB" />
+      <Capability Name="ID_CAP_MICROPHONE" />
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+      <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="BombaJobToken" TaskName="_default">
+        <TemplateType5>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Images\bg-pattern.png</BackgroundImageURI>
+          <Count>0</Count>
+          <Title>BombaJob</Title>
+        </TemplateType5>
+      </PrimaryToken>
+    </Tokens>
+  </App>
+</Deployment>
