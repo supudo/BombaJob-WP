@@ -14,5 +14,6 @@ namespace BombaJob.Database
 
         public Table<Texts> Texts;
         public Table<Categories> Categories;
+        public Table<JobOffers> JobOffers;
     }
 }
