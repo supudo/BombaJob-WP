@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace BombaJob
 {
@@ -38,6 +39,8 @@ namespace BombaJob
 
         public static string AppName = "BombaJob";
 
+        public static string DBConnectionString = "Data Source=isostore:/BombaJob.sdf";
+
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
         public static bool InDebug = true;
 
@@ -53,5 +56,11 @@ namespace BombaJob
 		public static string TwitterOAuthConsumerSecret = "zZm0RsfzkLpF3FYnxcM3BDZdxHA6sPLoPiTcBvohUEo";
 		public static string FacebookAppID = "162884250446512";
         public static string FacebookAppSecret = "a082d8bbc8e98cf63f8a1711ccbafe82";
+
+        public static void LogThis(params string[] logs)
+        {
+            if (AppSettings.InDebug)
+                Debugger.Log(3, "Warning", "[____BombaJob-Log] " + string.Join(" ", logs));
+        }
     }
 }

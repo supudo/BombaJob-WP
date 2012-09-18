@@ -10,17 +10,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
 using System.Threading;
 using System.ComponentModel;
-using BombaJob.Workers;
+using BombaJob.Utilities;
 
 namespace BombaJob
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : BombaJobBasePage
     {
         private Popup popup;
-        private BackgroundWorker backroungWorker;
         private SplashScreen splashScreen;
 
         public MainPage()
@@ -39,43 +37,27 @@ namespace BombaJob
             this.popup = new Popup();
             this.popup.Child = this.splashScreen;
             this.popup.IsOpen = true;
-            //ShowSplashScreen();
             this.splashScreen.startSync();
         }
 
-        void splashScreen_SplashComplete(object sender, BJEventArgs e)
+        void splashScreen_SplashComplete(object sender, BombaJobEventArgs e)
         {
             this.Dispatcher.BeginInvoke(() =>
             {
                 this.popup.IsOpen = false;
             });
+            RenderNewest();
         }
 
-        void splashScreen_SplashError(object sender, BJEventArgs e)
+        void splashScreen_SplashError(object sender, BombaJobEventArgs e)
         {
             if (e.IsError)
                 MessageBox.Show(e.ErrorMessage);
         }
 
-        private void ShowSplashScreen()
+        void RenderNewest()
         {
-            backroungWorker = new BackgroundWorker();
-            backroungWorker.DoWork += new DoWorkEventHandler(backroungWorker_DoWork);
-            backroungWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backroungWorker_RunWorkerCompleted);
-            backroungWorker.RunWorkerAsync();
-        }
-
-        void backroungWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            this.Dispatcher.BeginInvoke(() =>
-            {
-                this.popup.IsOpen = false;
-            });
-        }
-
-        void backroungWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Thread.Sleep(7000);
+            base.BuildApplicationBar();
         }
     }
 }

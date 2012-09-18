@@ -39,7 +39,7 @@ namespace BombaJob {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BombaJob.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BombaJob.Utilities.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to В момента няма интернет връзка. Опитайте по-късно пак.с.
+        ///   Looks up a localized string similar to В момента няма интернет връзка. Опитайте по-късно пак..
         /// </summary>
         public static string error_NoInternet {
             get {
                 return ResourceManager.GetString("error_NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Това действие ще затвори текущото приложение и ще отвори Internet Explorer. Сигурни ли сте?.
+        /// </summary>
+        public static string linkClicked {
+            get {
+                return ResourceManager.GetString("linkClicked", resourceCulture);
             }
         }
         
@@ -75,6 +84,78 @@ namespace BombaJob {
         public static string loading {
             get {
                 return ResourceManager.GetString("loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to За BombJob.bg.
+        /// </summary>
+        public static string menu_About {
+            get {
+                return ResourceManager.GetString("menu_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оферти.
+        /// </summary>
+        public static string menu_Jobs {
+            get {
+                return ResourceManager.GetString("menu_Jobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нови.
+        /// </summary>
+        public static string menu_Newest {
+            get {
+                return ResourceManager.GetString("menu_Newest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Хора.
+        /// </summary>
+        public static string menu_People {
+            get {
+                return ResourceManager.GetString("menu_People", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Публикувай.
+        /// </summary>
+        public static string menu_Post {
+            get {
+                return ResourceManager.GetString("menu_Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Търси.
+        /// </summary>
+        public static string menu_Search {
+            get {
+                return ResourceManager.GetString("menu_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настройки.
+        /// </summary>
+        public static string menu_Settings {
+            get {
+                return ResourceManager.GetString("menu_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Синхронизация.
+        /// </summary>
+        public static string menu_Sync {
+            get {
+                return ResourceManager.GetString("menu_Sync", resourceCulture);
             }
         }
     }

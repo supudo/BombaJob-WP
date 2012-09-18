@@ -19,10 +19,10 @@ namespace BombaJob
     public partial class App : Application
     {
         // The static ViewModel, to be used across the application.
-        private static BombaJobViewModel viewModel;
-        public static BombaJobViewModel ViewModel
+        private static BombaJobViewModel dbViewModel;
+        public static BombaJobViewModel DbViewModel
         {
-            get { return viewModel; }
+            get { return dbViewModel; }
         }
 
         /// <summary>
@@ -65,9 +65,14 @@ namespace BombaJob
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-
-            string DBConnectionString = "Data Source=isostore:/BombaJob.sdf";
-            viewModel = new BombaJobViewModel(DBConnectionString);
+            // Initial Database setup
+            using (BombaJob.Database.BombaJobDataContext db = new BombaJob.Database.BombaJobDataContext(AppSettings.DBConnectionString))
+            {
+                if (db.DatabaseExists() == false)
+                    db.CreateDatabase();
+            }
+            dbViewModel = new BombaJobViewModel(AppSettings.DBConnectionString);
+            dbViewModel.InitObservables();
         }
 
         // Code to execute when the application is launching (eg, from Start)

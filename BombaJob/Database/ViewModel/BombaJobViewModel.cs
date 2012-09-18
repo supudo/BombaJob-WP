@@ -16,6 +16,7 @@ namespace BombaJob.Database.ViewModel
             bjDB = new BombaJobDataContext(bjDBConnectionString);
         }
 
+        #region Onservables
         private ObservableCollection<Texts> _allTexts;
         public ObservableCollection<Texts> AllTexts
         {
@@ -48,6 +49,83 @@ namespace BombaJob.Database.ViewModel
                 NotifyPropertyChanged("AllJobOffers");
             }
         }
+
+        public void InitObservables()
+        {
+            AllTexts = new ObservableCollection<Texts>();
+            AllCategories = new ObservableCollection<Categories>();
+            AllJobOffers = new ObservableCollection<JobOffers>();
+        }
+        #endregion
+
+        #region Texts
+        public void AddText(Texts ent)
+        {
+            var exists = from t in bjDB.Texts
+                         where t.TextId == ent.TextId
+                         select t;
+            if (exists.Count() == 0)
+            {
+                bjDB.Texts.InsertOnSubmit(ent);
+                AllTexts.Add(ent);
+            }
+            else
+            {
+                Texts t = exists.FirstOrDefault();
+                t.Title = ent.Title;
+                t.Content = ent.Content;
+            }
+            bjDB.SubmitChanges();
+        }
+
+        public void DeleteText(Texts ent)
+        {
+            AllTexts.Remove(ent);
+            bjDB.Texts.DeleteOnSubmit(ent);
+            bjDB.SubmitChanges();
+        }
+
+        public string GetTextContent(int tid)
+        {
+            return (from t in bjDB.Texts where t.TextId == tid select new { t.Content }).FirstOrDefault().Content;
+        }
+        #endregion
+
+        #region Categories
+        public void AddCategory(Categories ent)
+        {
+            var exists = from t in bjDB.Categories
+                         where t.CategoryId == ent.CategoryId
+                         select t;
+            if (exists.Count() == 0)
+            {
+                bjDB.Categories.InsertOnSubmit(ent);
+                AllCategories.Add(ent);
+            }
+            else
+            {
+                Categories t = exists.FirstOrDefault();
+                t.Title = ent.Title;
+                t.OffersCount = ent.OffersCount;
+            }
+            bjDB.SubmitChanges();
+        }
+
+        public void DeleteCategory(Categories ent)
+        {
+            AllCategories.Remove(ent);
+            bjDB.Categories.DeleteOnSubmit(ent);
+            bjDB.SubmitChanges();
+        }
+
+        public void DeleteAllCategories()
+        {
+            AllCategories.Clear();
+            var ents = from t in bjDB.Categories select t;
+            bjDB.Categories.DeleteAllOnSubmit(ents);
+            bjDB.SubmitChanges();
+        }
+        #endregion
 
         public void SaveChangesToDB()
         {

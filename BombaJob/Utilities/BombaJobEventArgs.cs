@@ -9,15 +9,15 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace BombaJob.Workers
+namespace BombaJob.Utilities
 {
-    public class BJEventArgs : EventArgs
+    public class BombaJobEventArgs : EventArgs
     {
         private bool isError;
         private string errorMessage;
         private string xmlContent;
 
-        public BJEventArgs(bool ise, string eMsg, string xml)
+        public BombaJobEventArgs(bool ise, string eMsg, string xml)
         {
             this.isError = ise;
             this.errorMessage = eMsg;

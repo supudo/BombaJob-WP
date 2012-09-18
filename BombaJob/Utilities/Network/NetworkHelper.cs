@@ -10,11 +10,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Net.NetworkInformation;
 
-namespace BombaJob.Workers.Network
+namespace BombaJob.Utilities.Network
 {
     public class NetworkHelper
     {
-        public delegate void EventHandler(Object sender, BJEventArgs e);
+        public delegate void EventHandler(Object sender, BombaJobEventArgs e);
         public event EventHandler DownloadComplete;
         public event EventHandler DownloadError;
 
@@ -39,7 +39,7 @@ namespace BombaJob.Workers.Network
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
-                    DownloadError(this, new BJEventArgs(true, AppResources.error_NoInternet, ""));
+                    DownloadError(this, new BombaJobEventArgs(true, AppResources.error_NoInternet, ""));
                 });
             }
         }
@@ -49,9 +49,9 @@ namespace BombaJob.Workers.Network
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
                 if (e.Error != null)
-                    DownloadError(this, new BJEventArgs(true, e.Error.Message, ""));
+                    DownloadError(this, new BombaJobEventArgs(true, e.Error.Message, ""));
                 else
-                    DownloadComplete(this, new BJEventArgs(false, "", e.Result));
+                    DownloadComplete(this, new BombaJobEventArgs(false, "", e.Result));
             });
         }
     }

@@ -10,13 +10,13 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using BombaJob.Sync;
-using BombaJob.Workers;
+using BombaJob.Utilities;
 
 namespace BombaJob
 {
     public partial class SplashScreen : UserControl
     {
-        public delegate void EventHandler(Object sender, BJEventArgs e);
+        public delegate void EventHandler(Object sender, BombaJobEventArgs e);
         public event EventHandler SplashComplete;
         public event EventHandler SplashError;
 
@@ -38,19 +38,19 @@ namespace BombaJob
             this.syncManager.StartSync();
         }
 
-        void syncManager_SyncComplete(object sender, BJEventArgs e)
+        void syncManager_SyncComplete(object sender, BombaJobEventArgs e)
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                SplashComplete(this, new BJEventArgs(e.IsError, e.ErrorMessage, e.XmlContent));
+                SplashComplete(this, new BombaJobEventArgs(e.IsError, e.ErrorMessage, e.XmlContent));
             });
         }
 
-        void syncManager_SyncError(object sender, BJEventArgs e)
+        void syncManager_SyncError(object sender, BombaJobEventArgs e)
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                SplashError(this, new BJEventArgs(e.IsError, e.ErrorMessage, e.XmlContent));
+                SplashError(this, new BombaJobEventArgs(e.IsError, e.ErrorMessage, e.XmlContent));
             });
         }
     }

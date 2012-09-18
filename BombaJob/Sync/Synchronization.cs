@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Net;
-using System.Windows;
+using System.Linq;
 using System.Threading;
-using BombaJob.Workers.Network;
-using BombaJob.Workers;
+using System.Windows;
+using System.Xml.Linq;
+using BombaJob.Database;
+using BombaJob.Database.Tables;
+using BombaJob.Utilities.Network;
+using BombaJob.Utilities;
 
 namespace BombaJob.Sync
 {
     public class Synchronization
     {
-        public delegate void EventHandler(Object sender, BJEventArgs e);
+        public delegate void EventHandler(Object sender, BombaJobEventArgs e);
         public event EventHandler SyncComplete;
         public event EventHandler SyncError;
 
@@ -39,7 +43,7 @@ namespace BombaJob.Sync
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                SyncComplete(this, new BJEventArgs(false, "", ""));
+                SyncComplete(this, new BombaJobEventArgs(false, "", ""));
             });
         }
 
@@ -78,17 +82,17 @@ namespace BombaJob.Sync
         #endregion
 
         #region Network Events
-        void _networkHelper_DownloadComplete(object sender, BJEventArgs e)
+        void _networkHelper_DownloadComplete(object sender, BombaJobEventArgs e)
         {
             if (!e.IsError)
                 this.dispatchDownload(e.XmlContent);
         }
 
-        void _networkHelper_DownloadError(object sender, BJEventArgs e)
+        void _networkHelper_DownloadError(object sender, BombaJobEventArgs e)
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                SyncError(this, new BJEventArgs(true, e.ErrorMessage, ""));
+                SyncError(this, new BombaJobEventArgs(true, e.ErrorMessage, ""));
             });
         }
         #endregion
@@ -96,11 +100,37 @@ namespace BombaJob.Sync
         #region Initial Synchronization
         private void doTexts(string xmlContent)
         {
+            XDocument doc = XDocument.Parse(xmlContent);
+            var texts = from txt in doc.Descendants("tctxt")
+                        select new Texts
+                        {
+                            TextId = int.Parse(txt.Attribute("id").Value),
+                            Title = txt.Element("tctitle").Value,
+                            Content = txt.Element("tccontent").Value,
+                        };
+            using (BombaJobDataContext db = new BombaJobDataContext(AppSettings.DBConnectionString))
+            {
+                foreach (Texts t in texts)
+                    App.DbViewModel.AddText(t);
+            }
             this.syncCategories();
         }
 
         private void doCategories(string xmlContent)
         {
+            XDocument doc = XDocument.Parse(xmlContent);
+            var cats = from cat in doc.Descendants("cat")
+                        select new Categories
+                        {
+                            CategoryId = int.Parse(cat.Attribute("id").Value),
+                            OffersCount = int.Parse(cat.Attribute("cnt").Value),
+                            Title = cat.Element("cttl").Value,
+                        };
+            using (BombaJobDataContext db = new BombaJobDataContext(AppSettings.DBConnectionString))
+            {
+                foreach (Categories t in cats)
+                    App.DbViewModel.AddCategory(t);
+            }
             this.SynchronizationComplete();
         }
         #endregion

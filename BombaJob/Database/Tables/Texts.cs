@@ -8,8 +8,24 @@ namespace BombaJob.Database.Tables
     [Table]
     public class Texts : INotifyPropertyChanged, INotifyPropertyChanging
     {
-        private int _textId;
+        private int _id;
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                if (_id != value)
+                {
+                    NotifyPropertyChanging("Id");
+                    _id = value;
+                    NotifyPropertyChanged("Id");
+                }
+            }
+        }
+
+        private int _textId;
+        [Column]
         public int TextId
         {
             get { return _textId; }

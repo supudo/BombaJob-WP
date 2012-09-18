@@ -118,9 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="error_NoInternet" xml:space="preserve">
-    <value>В момента няма интернет връзка. Опитайте по-късно пак.с</value>
+    <value>В момента няма интернет връзка. Опитайте по-късно пак.</value>
+  </data>
+  <data name="linkClicked" xml:space="preserve">
+    <value>Това действие ще затвори текущото приложение и ще отвори Internet Explorer. Сигурни ли сте?</value>
   </data>
   <data name="loading" xml:space="preserve">
     <value>Зареждане...</value>
+  </data>
+  <data name="menu_About" xml:space="preserve">
+    <value>За BombJob.bg</value>
+  </data>
+  <data name="menu_Jobs" xml:space="preserve">
+    <value>Оферти</value>
+  </data>
+  <data name="menu_Newest" xml:space="preserve">
+    <value>Нови</value>
+  </data>
+  <data name="menu_People" xml:space="preserve">
+    <value>Хора</value>
+  </data>
+  <data name="menu_Post" xml:space="preserve">
+    <value>Публикувай</value>
+  </data>
+  <data name="menu_Search" xml:space="preserve">
+    <value>Търси</value>
+  </data>
+  <data name="menu_Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="menu_Sync" xml:space="preserve">
+    <value>Синхронизация</value>
   </data>
 </root>
