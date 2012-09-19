@@ -16,7 +16,7 @@ namespace BombaJob.Database.ViewModel
             bjDB = new BombaJobDataContext(bjDBConnectionString);
         }
 
-        #region Onservables
+        #region Observables
         private ObservableCollection<Texts> _allTexts;
         public ObservableCollection<Texts> AllTexts
         {
@@ -123,6 +123,34 @@ namespace BombaJob.Database.ViewModel
             AllCategories.Clear();
             var ents = from t in bjDB.Categories select t;
             bjDB.Categories.DeleteAllOnSubmit(ents);
+            bjDB.SubmitChanges();
+        }
+        #endregion
+
+        #region Offers
+        public void AddJobOffer(JobOffers ent)
+        {
+            var exists = from t in bjDB.JobOffers
+                         where t.OfferId == ent.OfferId
+                         select t;
+            if (exists.Count() == 0)
+            {
+                bjDB.JobOffers.InsertOnSubmit(ent);
+                AllJobOffers.Add(ent);
+            }
+            else
+            {
+                JobOffers t = exists.FirstOrDefault();
+                t.HumanYn = ent.HumanYn;
+                t.Category = ent.Category;
+                t.CategoryId = ent.CategoryId;
+                t.Email = ent.Email;
+                t.FreelanceYn = ent.FreelanceYn;
+                t.Negativism = ent.Negativism;
+                t.Positivism = ent.Positivism;
+                t.Title = ent.Title;
+                t.PublishDate = ent.PublishDate;
+            }
             bjDB.SubmitChanges();
         }
         #endregion

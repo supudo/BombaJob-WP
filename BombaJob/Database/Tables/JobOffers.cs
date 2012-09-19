@@ -40,9 +40,9 @@ namespace BombaJob.Database.Tables
             }
         }
 
-        private string _categoryId;
+        private int _categoryId;
         [Column]
-        public string CategoryId
+        public int CategoryId
         {
             get { return _categoryId; }
             set
@@ -52,6 +52,22 @@ namespace BombaJob.Database.Tables
                     NotifyPropertyChanging("CategoryId");
                     _categoryId = value;
                     NotifyPropertyChanged("CategoryId");
+                }
+            }
+        }
+
+        private string _category;
+        [Column]
+        public string Category
+        {
+            get { return _category; }
+            set
+            {
+                if (_category != value)
+                {
+                    NotifyPropertyChanging("Category");
+                    _category = value;
+                    NotifyPropertyChanged("Category");
                 }
             }
         }

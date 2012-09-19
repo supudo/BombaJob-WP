@@ -15,6 +15,11 @@ namespace BombaJob.Utilities
 {
     public class BombaJobBasePage : PhoneApplicationPage
     {
+        public BombaJobBasePage()
+        {
+            SupportedOrientations = SupportedPageOrientation.Portrait | SupportedPageOrientation.Landscape;
+        }
+
         public void BuildApplicationBar()
         {
             this.ApplicationBar = new ApplicationBar();

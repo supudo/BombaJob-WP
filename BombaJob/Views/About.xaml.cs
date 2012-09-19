@@ -19,15 +19,18 @@ namespace BombaJob.Views
         public About()
         {
             InitializeComponent();
-
             this.pageTitle.Text = AppResources.menu_About;
-            this.webView.NavigateToString(App.DbViewModel.GetTextContent(35));
-            this.webView.IsGeolocationEnabled = false;
-            this.webView.IsScriptEnabled = false;
-            this.webView.Navigating += new EventHandler<NavigatingEventArgs>(webView_Navigating);
+            this.webView.Loaded += WebBrowser_OnLoaded;
+            this.webView.Navigating += WebView_Navigating;
         }
 
-        void webView_Navigating(object sender, NavigatingEventArgs e)
+        private void WebBrowser_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string s = "<html><head></head><body>" + App.DbViewModel.GetTextContent(35) + "</body></html>";
+            this.webView.NavigateToString(s);
+        }
+
+        void WebView_Navigating(object sender, NavigatingEventArgs e)
         {
             MessageBox.Show(AppResources.linkClicked);
         }

@@ -24,7 +24,7 @@ namespace BombaJob.Sync
         {
             ServiceOpTexts,
             ServiceOpCategories,
-            ServiceOpJobs
+            ServiceOpNewestOffers
         }
 
         public Synchronization()
@@ -58,8 +58,8 @@ namespace BombaJob.Sync
                 case ServiceOp.ServiceOpCategories:
                     this.doCategories(xmlContent);
                     break;
-                case ServiceOp.ServiceOpJobs:
-                    this.doJobOffers(xmlContent);
+                case ServiceOp.ServiceOpNewestOffers:
+                    this.doNewestOffers(xmlContent);
                     break;
                 default:
                     break;
@@ -78,6 +78,12 @@ namespace BombaJob.Sync
         {
             this.currentOp = ServiceOp.ServiceOpCategories;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getCategories");
+        }
+
+        private void syncNewestOffers()
+        {
+            this.currentOp = ServiceOp.ServiceOpNewestOffers;
+            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getNewJobs");
         }
         #endregion
 
@@ -130,6 +136,31 @@ namespace BombaJob.Sync
             {
                 foreach (Categories t in cats)
                     App.DbViewModel.AddCategory(t);
+            }
+            this.syncNewestOffers();
+        }
+
+        private void doNewestOffers(string xmlContent)
+        {
+            XDocument doc = XDocument.Parse(xmlContent);
+            var jobs = from job in doc.Descendants("job")
+                       select new JobOffers
+                       {
+                           OfferId = int.Parse(job.Attribute("id").Value),
+                           CategoryId = int.Parse(job.Attribute("cid").Value),
+                           HumanYn = int.Parse(job.Attribute("hm").Value) == 1,
+                           FreelanceYn = int.Parse(job.Attribute("fyn").Value) == 1,
+                           Title = job.Element("jottl").Value,
+                           Email = job.Element("joem").Value,
+                           Category = job.Element("jocat").Value,
+                           Positivism = job.Element("jopos").Value,
+                           Negativism = job.Element("joneg").Value,
+                           PublishDate = DateTime.ParseExact(job.Element("jodt").Value, AppSettings.DateTimeFormat, null),
+                       };
+            using (BombaJobDataContext db = new BombaJobDataContext(AppSettings.DBConnectionString))
+            {
+                foreach (JobOffers t in jobs)
+                    App.DbViewModel.AddJobOffer(t);
             }
             this.SynchronizationComplete();
         }

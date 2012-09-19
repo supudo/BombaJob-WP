@@ -90,6 +90,24 @@
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Jobs.xaml.cs">
+      <DependentUpon>Jobs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Newest.xaml.cs">
+      <DependentUpon>Newest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OfferDetails.xaml.cs">
+      <DependentUpon>OfferDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\People.xaml.cs">
+      <DependentUpon>People.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Post.xaml.cs">
+      <DependentUpon>Post.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -105,6 +123,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Jobs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Newest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OfferDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\People.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Post.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
