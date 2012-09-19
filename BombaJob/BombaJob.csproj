@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BombaJob.Utilities</RootNamespace>
+    <RootNamespace>BombaJob</RootNamespace>
     <AssemblyName>BombaJob</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -162,6 +162,9 @@
     <Content Include="Images\Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\btnboom.png" />
+    <Resource Include="Images\iconcompany.png" />
+    <Resource Include="Images\iconperson.png" />
     <Content Include="Images\Menu\tb-jobs.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

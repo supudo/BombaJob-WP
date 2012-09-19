@@ -39,7 +39,7 @@ namespace BombaJob {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BombaJob.Utilities.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BombaJob.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace BombaJob {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BombaJob.
+        /// </summary>
+        public static string appName {
+            get {
+                return ResourceManager.GetString("appName", resourceCulture);
             }
         }
         
@@ -156,6 +165,321 @@ namespace BombaJob {
         public static string menu_Sync {
             get {
                 return ResourceManager.GetString("menu_Sync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Януари.
+        /// </summary>
+        public static string monthFull_1 {
+            get {
+                return ResourceManager.GetString("monthFull_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Октомври.
+        /// </summary>
+        public static string monthFull_10 {
+            get {
+                return ResourceManager.GetString("monthFull_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ноември.
+        /// </summary>
+        public static string monthFull_11 {
+            get {
+                return ResourceManager.GetString("monthFull_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Декември.
+        /// </summary>
+        public static string monthFull_12 {
+            get {
+                return ResourceManager.GetString("monthFull_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Февруари.
+        /// </summary>
+        public static string monthFull_2 {
+            get {
+                return ResourceManager.GetString("monthFull_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Март.
+        /// </summary>
+        public static string monthFull_3 {
+            get {
+                return ResourceManager.GetString("monthFull_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Април.
+        /// </summary>
+        public static string monthFull_4 {
+            get {
+                return ResourceManager.GetString("monthFull_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Май.
+        /// </summary>
+        public static string monthFull_5 {
+            get {
+                return ResourceManager.GetString("monthFull_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Юни.
+        /// </summary>
+        public static string monthFull_6 {
+            get {
+                return ResourceManager.GetString("monthFull_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Юли.
+        /// </summary>
+        public static string monthFull_7 {
+            get {
+                return ResourceManager.GetString("monthFull_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Август.
+        /// </summary>
+        public static string monthFull_8 {
+            get {
+                return ResourceManager.GetString("monthFull_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Септември.
+        /// </summary>
+        public static string monthFull_9 {
+            get {
+                return ResourceManager.GetString("monthFull_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Яну.
+        /// </summary>
+        public static string monthShort_1 {
+            get {
+                return ResourceManager.GetString("monthShort_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Окт.
+        /// </summary>
+        public static string monthShort_10 {
+            get {
+                return ResourceManager.GetString("monthShort_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ное.
+        /// </summary>
+        public static string monthShort_11 {
+            get {
+                return ResourceManager.GetString("monthShort_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дек.
+        /// </summary>
+        public static string monthShort_12 {
+            get {
+                return ResourceManager.GetString("monthShort_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фев.
+        /// </summary>
+        public static string monthShort_2 {
+            get {
+                return ResourceManager.GetString("monthShort_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Март.
+        /// </summary>
+        public static string monthShort_3 {
+            get {
+                return ResourceManager.GetString("monthShort_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Апр.
+        /// </summary>
+        public static string monthShort_4 {
+            get {
+                return ResourceManager.GetString("monthShort_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Май.
+        /// </summary>
+        public static string monthShort_5 {
+            get {
+                return ResourceManager.GetString("monthShort_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Юни.
+        /// </summary>
+        public static string monthShort_6 {
+            get {
+                return ResourceManager.GetString("monthShort_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Юли.
+        /// </summary>
+        public static string monthShort_7 {
+            get {
+                return ResourceManager.GetString("monthShort_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Авг.
+        /// </summary>
+        public static string monthShort_8 {
+            get {
+                return ResourceManager.GetString("monthShort_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Септ.
+        /// </summary>
+        public static string monthShort_9 {
+            get {
+                return ResourceManager.GetString("monthShort_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Няма категории..
+        /// </summary>
+        public static string noCategories {
+            get {
+                return ResourceManager.GetString("noCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Няма оферти..
+        /// </summary>
+        public static string noOffers {
+            get {
+                return ResourceManager.GetString("noOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ф.
+        /// </summary>
+        public static string shortCompany {
+            get {
+                return ResourceManager.GetString("shortCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ч.
+        /// </summary>
+        public static string shortHuman {
+            get {
+                return ResourceManager.GetString("shortHuman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Понеделник.
+        /// </summary>
+        public static string weekday_1 {
+            get {
+                return ResourceManager.GetString("weekday_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вторник.
+        /// </summary>
+        public static string weekday_2 {
+            get {
+                return ResourceManager.GetString("weekday_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сряда.
+        /// </summary>
+        public static string weekday_3 {
+            get {
+                return ResourceManager.GetString("weekday_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Четвъртък.
+        /// </summary>
+        public static string weekday_4 {
+            get {
+                return ResourceManager.GetString("weekday_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Петък.
+        /// </summary>
+        public static string weekday_5 {
+            get {
+                return ResourceManager.GetString("weekday_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Събота.
+        /// </summary>
+        public static string weekday_6 {
+            get {
+                return ResourceManager.GetString("weekday_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неделя.
+        /// </summary>
+        public static string weekday_7 {
+            get {
+                return ResourceManager.GetString("weekday_7", resourceCulture);
             }
         }
     }

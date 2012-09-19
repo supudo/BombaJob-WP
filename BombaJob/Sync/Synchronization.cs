@@ -156,6 +156,7 @@ namespace BombaJob.Sync
                            Positivism = job.Element("jopos").Value,
                            Negativism = job.Element("joneg").Value,
                            PublishDate = DateTime.ParseExact(job.Element("jodt").Value, AppSettings.DateTimeFormat, null),
+                           Icon = ((int.Parse(job.Attribute("hm").Value) == 1) ? "person" : "company"),
                        };
             using (BombaJobDataContext db = new BombaJobDataContext(AppSettings.DBConnectionString))
             {

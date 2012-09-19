@@ -19,6 +19,7 @@ namespace BombaJob.Utilities.Views
         public Search()
         {
             InitializeComponent();
+            this.pageTitle.Text = AppResources.menu_Search;
         }
     }
 }

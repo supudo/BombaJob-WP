@@ -19,6 +19,7 @@ namespace BombaJob.Utilities.Views
         public OfferDetails()
         {
             InitializeComponent();
+            this.pageTitle.Text = AppResources.appName;
         }
     }
 }

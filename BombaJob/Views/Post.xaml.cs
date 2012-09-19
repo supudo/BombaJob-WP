@@ -19,6 +19,7 @@ namespace BombaJob.Utilities.Views
         public Post()
         {
             InitializeComponent();
+            this.pageTitle.Text = AppResources.menu_Post;
         }
     }
 }

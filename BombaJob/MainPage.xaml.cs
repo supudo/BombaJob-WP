@@ -58,6 +58,7 @@ namespace BombaJob
         void RenderNewest()
         {
             base.BuildApplicationBar();
+            NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
         }
     }
 }

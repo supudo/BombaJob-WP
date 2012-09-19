@@ -63,18 +63,22 @@ namespace BombaJob.Utilities
 
         void menuNewest_Click(object sender, EventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
         }
 
         void menuJobsClick(object sender, EventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Views/Jobs.xaml", UriKind.Relative));
         }
 
         void menuPeople_Click(object sender, EventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Views/People.xaml", UriKind.Relative));
         }
 
         void menuSearch_Click(object sender, EventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Views/Search.xaml", UriKind.Relative));
         }
 
         void menuSettings_Click(object sender, EventArgs e)
@@ -83,6 +87,7 @@ namespace BombaJob.Utilities
 
         void menuPost_Click(object sender, EventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Views/Post.xaml", UriKind.Relative));
         }
 
         void menuSync_Click(object sender, EventArgs e)

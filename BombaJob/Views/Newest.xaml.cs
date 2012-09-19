@@ -19,6 +19,13 @@ namespace BombaJob.Utilities.Views
         public Newest()
         {
             InitializeComponent();
+            this.pageTitle.Text = AppResources.menu_Newest;
+            this.Loaded += new RoutedEventHandler(Newest_Loaded);
+        }
+
+        void Newest_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.offersList.ItemsSource = App.DbViewModel.GetNewestOffers();
         }
     }
 }

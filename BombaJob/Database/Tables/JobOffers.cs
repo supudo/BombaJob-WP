@@ -72,6 +72,22 @@ namespace BombaJob.Database.Tables
             }
         }
 
+        private string _icon;
+        [Column]
+        public string Icon
+        {
+            get { return _icon; }
+            set
+            {
+                if (_icon != value)
+                {
+                    NotifyPropertyChanging("Icon");
+                    _icon = value;
+                    NotifyPropertyChanged("Icon");
+                }
+            }
+        }
+
         private string _title;
         [Column]
         public string Title

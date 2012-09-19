@@ -150,8 +150,14 @@ namespace BombaJob.Database.ViewModel
                 t.Positivism = ent.Positivism;
                 t.Title = ent.Title;
                 t.PublishDate = ent.PublishDate;
+                t.Icon = ((ent.HumanYn) ? "person" : "company");
             }
             bjDB.SubmitChanges();
+        }
+
+        public List<JobOffers> GetNewestOffers()
+        {
+            return bjDB.JobOffers.OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
         }
         #endregion
 
