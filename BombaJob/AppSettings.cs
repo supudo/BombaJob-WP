@@ -52,10 +52,12 @@ namespace BombaJob
         public static bool ConfShowCategories = true;
         public static bool ConfShowBanners = true;
 
-		public static string TwitterOAuthConsumerKey = "OVvHQ1wio8LZklS5mRUuA";
-		public static string TwitterOAuthConsumerSecret = "zZm0RsfzkLpF3FYnxcM3BDZdxHA6sPLoPiTcBvohUEo";
-		public static string FacebookAppID = "162884250446512";
-        public static string FacebookAppSecret = "a082d8bbc8e98cf63f8a1711ccbafe82";
+		public static string TwitterOAuthConsumerKey = "";
+		public static string TwitterOAuthConsumerSecret = "";
+		public static string FacebookAppID = "";
+        public static string FacebookAppSecret = "";
+
+        public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
         public static void LogThis(params string[] logs)
         {
