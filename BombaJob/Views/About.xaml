@@ -32,7 +32,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,12">
-            <phone:WebBrowser Name="webView" Height="634" Width="456" Loaded="WebBrowser_OnLoaded" Navigating="WebView_Navigating" />
+            <phone:WebBrowser Name="webView" Loaded="WebBrowser_OnLoaded" Navigating="WebView_Navigating"></phone:WebBrowser>
         </Grid>
     </Grid>
 

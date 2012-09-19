@@ -25,6 +25,7 @@ namespace BombaJob.Utilities.Views
 
         void Newest_Loaded(object sender, RoutedEventArgs e)
         {
+            base.BuildApplicationBar();
             this.offersList.ItemsSource = App.DbViewModel.GetNewestOffers();
         }
     }

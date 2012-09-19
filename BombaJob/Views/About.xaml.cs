@@ -26,8 +26,7 @@ namespace BombaJob.Views
 
         private void WebBrowser_OnLoaded(object sender, RoutedEventArgs e)
         {
-            string s = "<html><head></head><body>" + App.DbViewModel.GetTextContent(35) + "</body></html>";
-            this.webView.NavigateToString(s);
+            this.webView.NavigateToString(App.DbViewModel.GetTextContent(35));
         }
 
         void WebView_Navigating(object sender, NavigatingEventArgs e)

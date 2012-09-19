@@ -20,6 +20,12 @@ namespace BombaJob.Utilities.Views
         {
             InitializeComponent();
             this.pageTitle.Text = AppResources.menu_Post;
+            this.Loaded += new RoutedEventHandler(Post_Loaded);
+        }
+
+        void Post_Loaded(object sender, RoutedEventArgs e)
+        {
+            base.BuildApplicationBar();
         }
     }
 }

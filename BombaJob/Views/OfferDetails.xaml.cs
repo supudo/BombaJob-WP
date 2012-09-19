@@ -20,6 +20,12 @@ namespace BombaJob.Utilities.Views
         {
             InitializeComponent();
             this.pageTitle.Text = AppResources.appName;
+            this.Loaded += new RoutedEventHandler(OfferDetails_Loaded);
+        }
+
+        void OfferDetails_Loaded(object sender, RoutedEventArgs e)
+        {
+            base.BuildApplicationBar();
         }
     }
 }
