@@ -37,7 +37,9 @@ namespace BombaJob.Utilities.Views
         {
             if (this.categoriesList.SelectedIndex == -1)
                 return;
-            //((BombaJob.Database.Tables.Categories)e.AddedItems[0]).CategoryId
+            int cid = ((BombaJob.Database.Models.Category)e.AddedItems[0]).CategoryID;
+            this.offersList.ItemsSource = App.DbViewModel.GetOffers(true, cid);
+            this.jobsPanorama.DefaultItem = this.panOffers;
             this.categoriesList.SelectedIndex = -1;
         }
 
