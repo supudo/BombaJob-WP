@@ -87,8 +87,10 @@
     <Compile Include="Sync\Synchronization.cs" />
     <Compile Include="Utilities\BombaJobEventArgs.cs" />
     <Compile Include="Utilities\BombaJobBasePage.cs" />
+    <Compile Include="Utilities\Converters\OfferDateLongConverter.cs" />
     <Compile Include="Utilities\Network\NetworkHelper.cs" />
-    <Compile Include="Utilities\OfferIconConverter.cs" />
+    <Compile Include="Utilities\Converters\OfferDateShortConverter.cs" />
+    <Compile Include="Utilities\Converters\OfferIconConverter.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>

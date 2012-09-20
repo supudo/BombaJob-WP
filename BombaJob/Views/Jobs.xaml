@@ -42,7 +42,7 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                                     <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
-                                    <TextBlock Text="{Binding Path=PublishDate}" Foreground="#FFFF8D00" Margin="12,0,0,10" />
+                                    <TextBlock Text="{Binding PublishDate, Converter={StaticResource OfferDateShortConverter}}" Foreground="#FFFF8D00" Margin="12,0,0,10" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

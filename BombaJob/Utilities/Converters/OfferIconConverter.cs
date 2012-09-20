@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace BombaJob.Utilities
+namespace BombaJob.Utilities.Converters
 {
     public class OfferIconConverter : IValueConverter
     {
