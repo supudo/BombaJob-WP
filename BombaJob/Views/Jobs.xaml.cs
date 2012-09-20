@@ -26,7 +26,7 @@ namespace BombaJob.Utilities.Views
         {
             base.BuildApplicationBar();
             this.ApplicationBar.Mode = Microsoft.Phone.Shell.ApplicationBarMode.Minimized;
-            this.jobsPanorama.Title = AppResources.menu_Jobs;
+            this.jobsPanorama.Title = AppResources.appName;
             this.panCategories.Header = AppResources.menu_Categories;
             this.panOffers.Header = AppResources.menu_Offers;
             this.categoriesList.ItemsSource = App.DbViewModel.GetCategories(false);

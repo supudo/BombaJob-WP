@@ -26,6 +26,27 @@ namespace BombaJob.Utilities.Views
         {
             base.BuildApplicationBar();
             this.ApplicationBar.Mode = Microsoft.Phone.Shell.ApplicationBarMode.Minimized;
+            this.jobsPanorama.Title = AppResources.appName;
+            this.panCategories.Header = AppResources.menu_Categories;
+            this.panOffers.Header = AppResources.menu_Offers;
+            this.categoriesList.ItemsSource = App.DbViewModel.GetCategories(true);
+            this.offersList.ItemsSource = App.DbViewModel.GetOffers(true);
+        }
+
+        private void Categories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.categoriesList.SelectedIndex == -1)
+                return;
+            //((BombaJob.Database.Tables.Categories)e.AddedItems[0]).CategoryId
+            this.categoriesList.SelectedIndex = -1;
+        }
+
+        private void Offers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.offersList.SelectedIndex == -1)
+                return;
+            NavigationService.Navigate(new Uri("/Views/OfferDetails.xaml?oid=" + ((BombaJob.Database.Tables.JobOffers)e.AddedItems[0]).OfferId, UriKind.Relative));
+            this.offersList.SelectedIndex = -1;
         }
     }
 }
