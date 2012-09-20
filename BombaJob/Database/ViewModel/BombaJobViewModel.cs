@@ -173,11 +173,6 @@ namespace BombaJob.Database.ViewModel
         }
         #endregion
 
-        public void SaveChangesToDB()
-        {
-            bjDB.SubmitChanges();
-        }
-
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
