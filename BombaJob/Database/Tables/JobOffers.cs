@@ -40,6 +40,22 @@ namespace BombaJob.Database.Tables
             }
         }
 
+        private int _refCategoryId;
+        [Column]
+        public int RefCategoryId
+        {
+            get { return _refCategoryId; }
+            set
+            {
+                if (_refCategoryId != value)
+                {
+                    NotifyPropertyChanging("RefCategoryId");
+                    _refCategoryId = value;
+                    NotifyPropertyChanged("RefCategoryId");
+                }
+            }
+        }
+
         private int _categoryId;
         [Column]
         public int CategoryId
@@ -56,18 +72,18 @@ namespace BombaJob.Database.Tables
             }
         }
 
-        private string _category;
+        private string _categoryTitle;
         [Column]
-        public string Category
+        public string CategoryTitle
         {
-            get { return _category; }
+            get { return _categoryTitle; }
             set
             {
-                if (_category != value)
+                if (_categoryTitle != value)
                 {
-                    NotifyPropertyChanging("Category");
-                    _category = value;
-                    NotifyPropertyChanged("Category");
+                    NotifyPropertyChanging("CategoryTitle");
+                    _categoryTitle = value;
+                    NotifyPropertyChanged("CategoryTitle");
                 }
             }
         }
@@ -245,6 +261,21 @@ namespace BombaJob.Database.Tables
                     _publishDateStamp = value;
                     NotifyPropertyChanged("PublishDateStamp");
                 }
+            }
+        }
+
+        private EntityRef<Categories> _category;
+        [Association(Storage = "_category", ThisKey = "RefCategoryId", OtherKey = "Id", IsForeignKey = true)]
+        public Categories Category
+        {
+            get { return _category.Entity; }
+            set
+            {
+                NotifyPropertyChanging("Category");
+                _category.Entity = value;
+                if (value != null)
+                    _categoryId = value.CategoryId;
+                NotifyPropertyChanging("Category");
             }
         }
 

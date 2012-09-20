@@ -125,6 +125,11 @@ namespace BombaJob.Database.ViewModel
             bjDB.Categories.DeleteAllOnSubmit(ents);
             bjDB.SubmitChanges();
         }
+
+        public List<Categories> GetCategories(bool humanYn)
+        {
+            return bjDB.Categories.Where(t => t.JobOffers.Any(j => j.HumanYn == humanYn)).OrderBy(t => t.Title).ToList();
+        }
         #endregion
 
         #region Offers
@@ -135,6 +140,7 @@ namespace BombaJob.Database.ViewModel
                          select t;
             if (exists.Count() == 0)
             {
+                ent.Category = bjDB.Categories.Where(c => c.CategoryId == ent.CategoryId).FirstOrDefault();
                 bjDB.JobOffers.InsertOnSubmit(ent);
                 AllJobOffers.Add(ent);
             }
@@ -150,7 +156,8 @@ namespace BombaJob.Database.ViewModel
                 t.Positivism = ent.Positivism;
                 t.Title = ent.Title;
                 t.PublishDate = ent.PublishDate;
-                t.Icon = ((ent.HumanYn) ? "person" : "company");
+                t.Icon = ent.Icon;
+                t.Category = bjDB.Categories.Where(c => c.CategoryId == t.CategoryId).FirstOrDefault();
             }
             bjDB.SubmitChanges();
         }
@@ -158,6 +165,11 @@ namespace BombaJob.Database.ViewModel
         public List<JobOffers> GetNewestOffers()
         {
             return bjDB.JobOffers.OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
+        }
+
+        public List<JobOffers> GetOffers(bool humanYn)
+        {
+            return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
         }
         #endregion
 

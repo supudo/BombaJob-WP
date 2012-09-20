@@ -75,6 +75,34 @@ namespace BombaJob.Database.Tables
         [Column(IsVersion = true)]
         private Binary _version;
 
+        private EntitySet<JobOffers> _jobOffers;
+        [Association(Storage = "_jobOffers", OtherKey = "RefCategoryId", ThisKey = "Id")]
+        public EntitySet<JobOffers> JobOffers
+        {
+            get { return this._jobOffers; }
+            set { this._jobOffers.Assign(value); }
+        }
+
+        public Categories()
+        {
+            _jobOffers = new EntitySet<JobOffers>(
+                new Action<JobOffers>(this.attach_JobOffer),
+                new Action<JobOffers>(this.detach_JobOffer)
+                );
+        }
+
+        private void attach_JobOffer(JobOffers off)
+        {
+            NotifyPropertyChanging("JobOffer");
+            off.Category = this;
+        }
+
+        private void detach_JobOffer(JobOffers off)
+        {
+            NotifyPropertyChanging("JobOffer");
+            off.Category = null;
+        }
+
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
