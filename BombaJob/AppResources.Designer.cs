@@ -106,6 +106,15 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Категории.
+        /// </summary>
+        public static string menu_Categories {
+            get {
+                return ResourceManager.GetString("menu_Categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Оферти.
         /// </summary>
         public static string menu_Jobs {
@@ -120,6 +129,15 @@ namespace BombaJob {
         public static string menu_Newest {
             get {
                 return ResourceManager.GetString("menu_Newest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оферти.
+        /// </summary>
+        public static string menu_Offers {
+            get {
+                return ResourceManager.GetString("menu_Offers", resourceCulture);
             }
         }
         

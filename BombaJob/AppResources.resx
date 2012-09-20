@@ -132,11 +132,17 @@
   <data name="menu_About" xml:space="preserve">
     <value>За BombJob.bg</value>
   </data>
+  <data name="menu_Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
   <data name="menu_Jobs" xml:space="preserve">
     <value>Оферти</value>
   </data>
   <data name="menu_Newest" xml:space="preserve">
     <value>Нови</value>
+  </data>
+  <data name="menu_Offers" xml:space="preserve">
+    <value>Оферти</value>
   </data>
   <data name="menu_People" xml:space="preserve">
     <value>Хора</value>

@@ -9,6 +9,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:BombaJob" x:Key="LocalizedStrings" />
+        <bj:OfferIconConverter xmlns:bj="clr-namespace:BombaJob.Utilities" x:Key="OfferIconConverter" />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Database\BombaJobDataContext.cs" />
+    <Compile Include="Database\Models\Category.cs" />
     <Compile Include="Database\Tables\Categories.cs" />
     <Compile Include="Database\Tables\JobOffers.cs" />
     <Compile Include="Database\Tables\Texts.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Utilities\BombaJobEventArgs.cs" />
     <Compile Include="Utilities\BombaJobBasePage.cs" />
     <Compile Include="Utilities\Network\NetworkHelper.cs" />
+    <Compile Include="Utilities\OfferIconConverter.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
