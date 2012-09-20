@@ -45,7 +45,9 @@ namespace BombaJob.Utilities.Views
         {
             if (this.offersList.SelectedIndex == -1)
                 return;
-            NavigationService.Navigate(new Uri("/Views/OfferDetails.xaml?oid=" + ((BombaJob.Database.Tables.JobOffers)e.AddedItems[0]).OfferId, UriKind.Relative));
+            int oid = ((BombaJob.Database.Tables.JobOffers)e.AddedItems[0]).OfferId;
+            bool humanYn = ((BombaJob.Database.Tables.JobOffers)e.AddedItems[0]).HumanYn;
+            NavigationService.Navigate(new Uri("/Views/OfferDetails.xaml?oid=" + oid + "&h=" + humanYn, UriKind.Relative));
             this.offersList.SelectedIndex = -1;
         }
     }

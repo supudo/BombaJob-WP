@@ -31,10 +31,11 @@ namespace BombaJob.Utilities.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string oid = "";
-            if (NavigationContext.QueryString.TryGetValue("oid", out oid))
+            string oid = "", h = "";
+            if (NavigationContext.QueryString.TryGetValue("oid", out oid) && NavigationContext.QueryString.TryGetValue("h", out h))
             {
                 int offerID = int.Parse(oid);
+                bool humanYn = bool.Parse(h);
                 AppSettings.LogThis("Offer id = " + offerID);
             }
             else
