@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -27,6 +27,14 @@ namespace BombaJob.Utilities.Views
         {
             base.BuildApplicationBar();
             this.offersList.ItemsSource = App.DbViewModel.GetNewestOffers();
+        }
+
+        private void Offers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.offersList.SelectedIndex == -1)
+                return;
+            NavigationService.Navigate(new Uri("/Views/OfferDetails.xaml?oid=" + ((BombaJob.Database.Tables.JobOffers)e.AddedItems[0]).OfferId, UriKind.Relative));
+            this.offersList.SelectedIndex = -1;
         }
     }
 }

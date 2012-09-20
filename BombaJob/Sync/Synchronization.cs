@@ -152,11 +152,11 @@ namespace BombaJob.Sync
                            FreelanceYn = int.Parse(job.Attribute("fyn").Value) == 1,
                            Title = job.Element("jottl").Value,
                            Email = job.Element("joem").Value,
-                           Category = job.Element("jocat").Value,
+                           CategoryTitle = job.Element("jocat").Value,
                            Positivism = job.Element("jopos").Value,
                            Negativism = job.Element("joneg").Value,
                            PublishDate = DateTime.ParseExact(job.Element("jodt").Value, AppSettings.DateTimeFormat, null),
-                           Icon = ((int.Parse(job.Attribute("hm").Value) == 1) ? "person" : "company"),
+                           Icon = ((int.Parse(job.Attribute("hm").Value) == 1) ? "iconperson" : "iconcompany"),
                        };
             using (BombaJobDataContext db = new BombaJobDataContext(AppSettings.DBConnectionString))
             {

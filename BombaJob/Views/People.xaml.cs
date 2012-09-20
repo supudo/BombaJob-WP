@@ -19,6 +19,13 @@ namespace BombaJob.Utilities.Views
         public People()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(People_Loaded);
+        }
+
+        void People_Loaded(object sender, RoutedEventArgs e)
+        {
+            base.BuildApplicationBar();
+            this.ApplicationBar.Mode = Microsoft.Phone.Shell.ApplicationBarMode.Minimized;
         }
     }
 }
