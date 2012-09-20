@@ -421,6 +421,15 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Оферти:.
+        /// </summary>
+        public static string offers {
+            get {
+                return ResourceManager.GetString("offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ф.
         /// </summary>
         public static string shortCompany {

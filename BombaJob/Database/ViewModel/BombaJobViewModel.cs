@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BombaJob.Database.Context;
 using BombaJob.Database.Tables;
+using BombaJob.Database.Models;
 
 namespace BombaJob.Database.ViewModel
 {
@@ -126,9 +127,19 @@ namespace BombaJob.Database.ViewModel
             bjDB.SubmitChanges();
         }
 
-        public List<Categories> GetCategories(bool humanYn)
+        public List<Category> GetCategories(bool humanYn)
         {
-            return bjDB.Categories.Where(t => t.JobOffers.Any(j => j.HumanYn == humanYn)).OrderBy(t => t.Title).ToList();
+            var q = from t in bjDB.Categories
+                    where t.JobOffers.Any(j => j.HumanYn == humanYn)
+                    orderby t.Title
+                    select new Category
+                    {
+                        CategoryID = t.CategoryId,
+                        Title = t.Title,
+                        OffersCount = t.JobOffers.Where(j => j.HumanYn == humanYn).Count()
+                    };
+            return q.ToList();
+            //return bjDB.Categories.Where(t => t.JobOffers.Any(j => j.HumanYn == humanYn)).OrderBy(t => t.Title).Select(t => new Category {  }).ToList();
         }
         #endregion
 

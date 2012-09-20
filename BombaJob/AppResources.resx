@@ -237,6 +237,9 @@
   <data name="noOffers" xml:space="preserve">
     <value>Няма оферти.</value>
   </data>
+  <data name="offers" xml:space="preserve">
+    <value>Оферти:</value>
+  </data>
   <data name="shortCompany" xml:space="preserve">
     <value>Ф</value>
   </data>
