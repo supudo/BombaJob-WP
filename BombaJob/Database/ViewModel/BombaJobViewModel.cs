@@ -129,17 +129,12 @@ namespace BombaJob.Database.ViewModel
 
         public List<Category> GetCategories(bool humanYn)
         {
-            var q = from t in bjDB.Categories
-                    where t.JobOffers.Any(j => j.HumanYn == humanYn)
-                    orderby t.Title
-                    select new Category
-                    {
-                        CategoryID = t.CategoryId,
-                        Title = t.Title,
-                        OffersCount = t.JobOffers.Where(j => j.HumanYn == humanYn).Count()
-                    };
-            return q.ToList();
-            //return bjDB.Categories.Where(t => t.JobOffers.Any(j => j.HumanYn == humanYn)).OrderBy(t => t.Title).Select(t => new Category {  }).ToList();
+            return bjDB.Categories.Where(t => t.JobOffers.Any(j => j.HumanYn == humanYn)).OrderBy(t => t.Title).Select(t => new Category
+                        {
+                            CategoryID = t.CategoryId,
+                            Title = t.Title,
+                            OffersCount = t.JobOffers.Where(j => j.HumanYn == humanYn).Count()
+                        }).ToList();
         }
         #endregion
 
@@ -181,6 +176,11 @@ namespace BombaJob.Database.ViewModel
         public List<JobOffers> GetOffers(bool humanYn)
         {
             return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
+        }
+
+        public List<JobOffers> GetOffers(bool humanYn, int categoryId)
+        {
+            return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).Where(t => t.CategoryId == categoryId).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
         }
         #endregion
 
