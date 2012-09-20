@@ -66,7 +66,7 @@ namespace BombaJob
             }
 
             // Initial Database setup
-            using (BombaJob.Database.BombaJobDataContext db = new BombaJob.Database.BombaJobDataContext(AppSettings.DBConnectionString))
+            using (BombaJob.Database.Context.BombaJobDataContext db = new BombaJob.Database.Context.BombaJobDataContext(AppSettings.DBConnectionString))
             {
                 if (db.DatabaseExists() == false)
                     db.CreateDatabase();

@@ -4,7 +4,7 @@ using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using BombaJob.Database.Tables;
 
-namespace BombaJob.Database
+namespace BombaJob.Database.Context
 {
     public class BombaJobDataContext : DataContext
     {

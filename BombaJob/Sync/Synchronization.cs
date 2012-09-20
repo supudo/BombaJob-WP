@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Xml.Linq;
-using BombaJob.Database;
+using BombaJob.Database.Context;
 using BombaJob.Database.Tables;
 using BombaJob.Utilities.Network;
 using BombaJob.Utilities;

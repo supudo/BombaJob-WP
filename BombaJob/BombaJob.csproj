@@ -70,7 +70,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="Database\BombaJobDataContext.cs" />
+    <Compile Include="Database\Context\BombaJobDataContext.cs" />
     <Compile Include="Database\Models\Category.cs" />
     <Compile Include="Database\Tables\Categories.cs" />
     <Compile Include="Database\Tables\JobOffers.cs" />

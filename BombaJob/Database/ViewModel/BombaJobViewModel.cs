@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using BombaJob.Database;
+using BombaJob.Database.Context;
 using BombaJob.Database.Tables;
 
 namespace BombaJob.Database.ViewModel
