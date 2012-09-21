@@ -16,40 +16,22 @@ namespace BombaJob.Database.Models
         private int _categoryID;
         public int CategoryID
         {
-            get
-            {
-                return this._categoryID;
-            }
-            set
-            {
-                this._categoryID = value;
-            }
+            get { return this._categoryID; }
+            set { this._categoryID = value; }
         }
 
         private int _offersCount;
         public int OffersCount
         {
-            get
-            {
-                return this._offersCount;
-            }
-            set
-            {
-                this._offersCount = value;
-            }
+            get { return this._offersCount; }
+            set { this._offersCount = value; }
         }
 
         private string _title;
         public string Title
         {
-            get
-            {
-                return this._title;
-            }
-            set
-            {
-                this._title = value;
-            }
+            get { return this._title; }
+            set { this._title = value; }
         }
     }
 }

@@ -403,6 +403,15 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не.
+        /// </summary>
+        public static string no {
+            get {
+                return ResourceManager.GetString("no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Няма категории..
         /// </summary>
         public static string noCategories {
@@ -417,6 +426,60 @@ namespace BombaJob {
         public static string noOffers {
             get {
                 return ResourceManager.GetString("noOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Категория:.
+        /// </summary>
+        public static string offer_Category {
+            get {
+                return ResourceManager.GetString("offer_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Предимства на фирмата:.
+        /// </summary>
+        public static string offer_Company_Negativ {
+            get {
+                return ResourceManager.GetString("offer_Company_Negativ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Описание на позицията:.
+        /// </summary>
+        public static string offer_Company_Positiv {
+            get {
+                return ResourceManager.GetString("offer_Company_Positiv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проект/Freelance:.
+        /// </summary>
+        public static string offer_FreelanceYn {
+            get {
+                return ResourceManager.GetString("offer_FreelanceYn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Умения:.
+        /// </summary>
+        public static string offer_Human_Negativ {
+            get {
+                return ResourceManager.GetString("offer_Human_Negativ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проблем:.
+        /// </summary>
+        public static string offer_Human_Positiv {
+            get {
+                return ResourceManager.GetString("offer_Human_Positiv", resourceCulture);
             }
         }
         
@@ -507,6 +570,15 @@ namespace BombaJob {
         public static string weekday_7 {
             get {
                 return ResourceManager.GetString("weekday_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Да.
+        /// </summary>
+        public static string yes {
+            get {
+                return ResourceManager.GetString("yes", resourceCulture);
             }
         }
     }

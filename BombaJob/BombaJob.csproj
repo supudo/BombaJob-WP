@@ -72,6 +72,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Database\Context\BombaJobDataContext.cs" />
     <Compile Include="Database\Models\Category.cs" />
+    <Compile Include="Database\Models\JobOffer.cs" />
     <Compile Include="Database\Tables\Categories.cs" />
     <Compile Include="Database\Tables\JobOffers.cs" />
     <Compile Include="Database\Tables\Texts.cs" />

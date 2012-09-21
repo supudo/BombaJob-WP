@@ -66,5 +66,35 @@ namespace BombaJob
             if (AppSettings.InDebug)
                 Debugger.Log(3, "Warning", "[____BombaJob-Log] " + string.Join(" ", logs));
         }
+
+        public static string DoLongDate(DateTime dt)
+        {
+            if (dt == null)
+                return "";
+            string date = "";
+            date += dt.ToString("HH:mm");
+            date += " ";
+            date += AppResources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
+            date += ", ";
+            date += dt.Day;
+            date += " ";
+            date += AppResources.ResourceManager.GetString("monthFull_" + dt.Month);
+            return date;
+        }
+
+        public static string DoShortDate(DateTime dt)
+        {
+            if (dt == null)
+                return "";
+            string date = "";
+            date += dt.ToString("HH:mm");
+            date += " ";
+            date += AppResources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
+            date += ", ";
+            date += dt.Day;
+            date += " ";
+            date += AppResources.ResourceManager.GetString("monthShort_" + dt.Month);
+            return date;
+        }
     }
 }

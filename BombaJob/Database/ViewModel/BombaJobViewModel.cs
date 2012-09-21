@@ -182,6 +182,28 @@ namespace BombaJob.Database.ViewModel
         {
             return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).Where(t => t.CategoryId == categoryId).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
         }
+
+        public JobOffer GetOffer(int oid)
+        {
+            return bjDB.JobOffers.Where(t => t.OfferId == oid).Select(t => new JobOffer
+            {
+                Id = t.Id,
+                OfferId = t.OfferId,
+                CategoryId = t.CategoryId,
+                CategoryTitle = t.CategoryTitle,
+                RefCategoryId = t.RefCategoryId,
+                Email = t.Email,
+                FreelanceYn = t.FreelanceYn,
+                HumanYn = t.HumanYn,
+                Icon = t.Icon,
+                Negativism = t.Negativism,
+                Positivism = t.Positivism,
+                PublishDate = t.PublishDate,
+                ReadYn = t.ReadYn,
+                SentMessageYn = t.SentMessageYn,
+                Title = t.Title
+            }).FirstOrDefault();
+        }
         #endregion
 
         #region INotifyPropertyChanged Members

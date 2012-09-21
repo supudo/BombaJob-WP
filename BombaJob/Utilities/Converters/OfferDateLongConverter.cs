@@ -11,16 +11,7 @@ namespace BombaJob.Utilities.Converters
         {
             if (value == null)
                 return null;
-            DateTime dt = (DateTime)value;
-            string date = "";
-            date += dt.ToString("HH:mm");
-            date += " ";
-            date += AppResources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
-            date += ", ";
-            date += dt.Day;
-            date += " ";
-            date += AppResources.ResourceManager.GetString("monthLong_" + dt.Month);
-            return date;
+            return AppSettings.DoLongDate((DateTime)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -37,6 +37,19 @@ namespace BombaJob.Utilities.Views
                 int offerID = int.Parse(oid);
                 bool humanYn = bool.Parse(h);
                 AppSettings.LogThis("Offer id = " + offerID);
+                BombaJob.Database.Models.JobOffer jo = App.DbViewModel.GetOffer(offerID);
+                this.pageTitle.Text = jo.Title;
+
+                this.txtCategory.Text = jo.CategoryTitle;
+                this.txtDate.Text = AppSettings.DoLongDate(jo.PublishDate);
+
+                this.txtFreelanceLabel.Text = AppResources.offer_FreelanceYn;
+                this.txtFreelance.Text = ((jo.FreelanceYn) ? AppResources.yes : AppResources.no);
+
+                this.txtNegativLabel.Text = ((humanYn) ? AppResources.offer_Human_Negativ : AppResources.offer_Company_Negativ);
+                this.txtNegativ.Text = jo.Negativism;
+                this.txtPositivLabel.Text = ((humanYn) ? AppResources.offer_Human_Positiv : AppResources.offer_Company_Positiv);
+                this.txtPositiv.Text = jo.Positivism;
             }
             else
                 NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));

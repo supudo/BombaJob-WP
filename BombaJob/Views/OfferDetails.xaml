@@ -27,11 +27,29 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="pageTitle" Text="Newest" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="pageTitle" Text="Newest" Margin="9,-7,9,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FFFF8D00" FontSize="32" TextWrapping="Wrap" FontWeight="Bold" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                    <TextBlock Name="txtDate" TextWrapping="Wrap" Text="Date..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,30"></TextBlock>
+                    <TextBlock Name="txtCategory" TextWrapping="Wrap" Text="Category..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <TextBlock Name="txtFreelanceLabel" TextWrapping="NoWrap" Text="Freelance..." Foreground="#FF000000" FontWeight="Bold" FontSize="24" Margin="0,0,10,20"></TextBlock>
+                        <TextBlock Name="txtFreelance" TextWrapping="NoWrap" Text="Yes" Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                        <TextBlock Name="txtPositivLabel" TextWrapping="Wrap" Text="Positiv" Foreground="#FF000000" FontSize="24" FontWeight="Bold" Margin="0,10,10,0"></TextBlock>
+                        <TextBlock Name="txtPositiv" TextWrapping="Wrap" Text="Positiv..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                        <TextBlock Name="txtNegativLabel" TextWrapping="Wrap" Text="Negativ" Foreground="#FF000000" FontSize="24" FontWeight="Bold" Margin="0,10,10,0"></TextBlock>
+                        <TextBlock Name="txtNegativ" TextWrapping="Wrap" Text="Negativ..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
-
 </bj:BombaJobBasePage>

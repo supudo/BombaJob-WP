@@ -231,6 +231,9 @@
   <data name="monthShort_9" xml:space="preserve">
     <value>Септ</value>
   </data>
+  <data name="no" xml:space="preserve">
+    <value>Не</value>
+  </data>
   <data name="noCategories" xml:space="preserve">
     <value>Няма категории.</value>
   </data>
@@ -239,6 +242,24 @@
   </data>
   <data name="offers" xml:space="preserve">
     <value>Оферти:</value>
+  </data>
+  <data name="offer_Category" xml:space="preserve">
+    <value>Категория:</value>
+  </data>
+  <data name="offer_Company_Negativ" xml:space="preserve">
+    <value>Предимства на фирмата:</value>
+  </data>
+  <data name="offer_Company_Positiv" xml:space="preserve">
+    <value>Описание на позицията:</value>
+  </data>
+  <data name="offer_FreelanceYn" xml:space="preserve">
+    <value>Проект/Freelance:</value>
+  </data>
+  <data name="offer_Human_Negativ" xml:space="preserve">
+    <value>Умения:</value>
+  </data>
+  <data name="offer_Human_Positiv" xml:space="preserve">
+    <value>Проблем:</value>
   </data>
   <data name="shortCompany" xml:space="preserve">
     <value>Ф</value>
@@ -266,5 +287,8 @@
   </data>
   <data name="weekday_7" xml:space="preserve">
     <value>Неделя</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Да</value>
   </data>
 </root>
