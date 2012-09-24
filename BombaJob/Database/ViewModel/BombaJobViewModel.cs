@@ -175,12 +175,12 @@ namespace BombaJob.Database.ViewModel
 
         public List<JobOffers> GetOffers(bool humanYn)
         {
-            return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
+            return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).ToList();
         }
 
         public List<JobOffers> GetOffers(bool humanYn, int categoryId)
         {
-            return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).Where(t => t.CategoryId == categoryId).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).Take(AppSettings.OffersPerPage).ToList();
+            return bjDB.JobOffers.Where(t => t.HumanYn == humanYn).Where(t => t.CategoryId == categoryId).OrderBy(t => t.ReadYn).ThenByDescending(t => t.PublishDate).ToList();
         }
 
         public JobOffer GetOffer(int oid)
@@ -203,6 +203,32 @@ namespace BombaJob.Database.ViewModel
                 SentMessageYn = t.SentMessageYn,
                 Title = t.Title
             }).FirstOrDefault();
+        }
+        #endregion
+
+        #region Search
+        public List<JobOffer> SearchOffers(string keyword, bool freelanceYn)
+        {
+            return bjDB.JobOffers.Where(t => t.Title.ToLower().Contains(keyword.ToLower()) || t.Positivism.ToLower().Contains(keyword.ToLower()) || t.Negativism.ToLower().Contains(keyword.ToLower()))
+                .Where(t => t.FreelanceYn == freelanceYn)
+                .Select(t => new JobOffer
+                {
+                    Id = t.Id,
+                    OfferId = t.OfferId,
+                    CategoryId = t.CategoryId,
+                    CategoryTitle = t.CategoryTitle,
+                    RefCategoryId = t.RefCategoryId,
+                    Email = t.Email,
+                    FreelanceYn = t.FreelanceYn,
+                    HumanYn = t.HumanYn,
+                    Icon = t.Icon,
+                    Negativism = t.Negativism,
+                    Positivism = t.Positivism,
+                    PublishDate = t.PublishDate,
+                    ReadYn = t.ReadYn,
+                    SentMessageYn = t.SentMessageYn,
+                    Title = t.Title
+                }).ToList();
         }
         #endregion
 

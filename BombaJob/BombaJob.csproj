@@ -114,6 +114,9 @@
     <Compile Include="Views\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchResults.xaml.cs">
+      <DependentUpon>SearchResults.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Search.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

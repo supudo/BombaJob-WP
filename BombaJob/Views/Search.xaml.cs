@@ -37,6 +37,12 @@ namespace BombaJob.Utilities.Views
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            if (AppSettings.ConfOnlineSearch)
+            {
+                NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelance.IsChecked, UriKind.Relative));
+            }
+            else
+                NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelance.IsChecked, UriKind.Relative));
         }
     }
 }
