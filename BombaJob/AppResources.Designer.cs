@@ -493,6 +493,24 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Проект/Freelance.
+        /// </summary>
+        public static string search_Freelance {
+            get {
+                return ResourceManager.GetString("search_Freelance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Търси.
+        /// </summary>
+        public static string search_Search {
+            get {
+                return ResourceManager.GetString("search_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ф.
         /// </summary>
         public static string shortCompany {

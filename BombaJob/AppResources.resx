@@ -291,4 +291,10 @@
   <data name="yes" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="search_Search" xml:space="preserve">
+    <value>Търси</value>
+  </data>
+  <data name="search_Freelance" xml:space="preserve">
+    <value>Проект/Freelance</value>
+  </data>
 </root>
