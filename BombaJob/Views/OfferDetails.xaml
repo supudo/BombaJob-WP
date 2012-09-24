@@ -42,12 +42,13 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                         <TextBlock Name="txtPositivLabel" TextWrapping="Wrap" Text="Positiv" Foreground="#FF000000" FontSize="24" FontWeight="Bold" Margin="0,10,10,0"></TextBlock>
-                        <TextBlock Name="txtPositiv" TextWrapping="Wrap" Text="Positiv..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>
+                        <!--<TextBlock Name="txtPositiv" TextWrapping="Wrap" Text="Positiv..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>-->
+                        <RichTextBox Name="rtbPositiv" TextWrapping="Wrap" Foreground="#FF000000" FontSize="24" Margin="0,0,0,20" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                         <TextBlock Name="txtNegativLabel" TextWrapping="Wrap" Text="Negativ" Foreground="#FF000000" FontSize="24" FontWeight="Bold" Margin="0,10,10,0"></TextBlock>
                         <TextBlock Name="txtNegativ" TextWrapping="Wrap" Text="Negativ..." Foreground="#FF000000" FontSize="24" Margin="0,0,0,20"></TextBlock>
-                    </StackPanel> 
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

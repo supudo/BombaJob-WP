@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -12,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using BombaJob.Utilities;
+using BombaJob.Utilities.Extensions;
 
 namespace BombaJob.Utilities.Views
 {
@@ -49,10 +51,45 @@ namespace BombaJob.Utilities.Views
                 this.txtNegativLabel.Text = ((humanYn) ? AppResources.offer_Human_Negativ : AppResources.offer_Company_Negativ);
                 this.txtNegativ.Text = jo.Negativism;
                 this.txtPositivLabel.Text = ((humanYn) ? AppResources.offer_Human_Positiv : AppResources.offer_Company_Positiv);
-                this.txtPositiv.Text = jo.Positivism;
+                //this.txtPositiv.Text = jo.Positivism;
+                //RichTextBoxExtensions.SetLinkedText2(this.rtbPositiv, jo.Positivism);
+                this.rtbPositiv.Blocks.Add(ParseContent(jo.Positivism));
             }
             else
                 NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
+        }
+
+        private Block ParseContent(string htmlText)
+        {
+            var paragraph = new Paragraph();
+            var lastIndex = 0;
+
+            foreach (Match m in Regex.Matches(htmlText, @"(http(s)?://)?([\w-]+\.)+[\w-]+(/\S\w[\w- ;,./?%&=]\S*)?"))
+            {
+                if (m.Index > 0)
+                {
+                    if (m.Index <= lastIndex)
+                        paragraph.Inlines.Add(htmlText.Substring(lastIndex, m.Index));
+                }
+
+                var hyperlink = new Hyperlink()
+                {
+                    NavigateUri = new System.Uri(m.Value, System.UriKind.RelativeOrAbsolute),
+                    TargetName = "_blank",
+                    Foreground = this.rtbPositiv.Foreground
+                };
+
+                hyperlink.Inlines.Add(m.Value);
+
+                paragraph.Inlines.Add(hyperlink);
+
+                lastIndex = m.Index + m.Length;
+            }
+
+            if (lastIndex < htmlText.Length)
+                paragraph.Inlines.Add(htmlText.Substring(lastIndex));
+
+            return paragraph;
         }
     }
 }
