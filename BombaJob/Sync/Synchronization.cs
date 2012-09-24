@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Linq;
 using System.Threading;
@@ -64,7 +65,10 @@ namespace BombaJob.Sync
         public void DoSearch(string keyword, int freelance)
         {
             this.currentOp = ServiceOp.ServiceOpSearch;
-            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=searchOffers?keyword=" + keyword + "&freelance=" + freelance);
+            Dictionary<string, string> postArray = new Dictionary<string, string>();
+            postArray.Add("keyword", keyword);
+            postArray.Add("freelance", "" + freelance);
+            this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=searchOffers", postArray);
         }
         #endregion
 

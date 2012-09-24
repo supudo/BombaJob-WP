@@ -31,7 +31,7 @@ namespace BombaJob.Utilities.Views
         {
             List<String> fl = new List<string>();
             fl.Add(AppResources.freelance_all);
-            fl.Add(AppResources.freelance_all);
+            fl.Add(AppResources.freelance_only);
             fl.Add(AppResources.freelance_no);
             this.chkFreelanceYn.ItemsSource = fl;
         }
@@ -44,7 +44,7 @@ namespace BombaJob.Utilities.Views
                     this.syncManager = new Synchronization();
                 this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SyncError);
                 this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SyncComplete);
-                this.syncManager.DoSearch(this.txtKeyword.Text, 0);
+                this.syncManager.DoSearch(this.txtKeyword.Text, this.chkFreelanceYn.SelectedIndex);
             }
             else
                 NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelanceYn.SelectedIndex, UriKind.Relative));
