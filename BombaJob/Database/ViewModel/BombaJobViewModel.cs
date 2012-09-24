@@ -207,10 +207,9 @@ namespace BombaJob.Database.ViewModel
         #endregion
 
         #region Search
-        public List<JobOffer> SearchOffers(string keyword, bool freelanceYn)
+        public List<JobOffer> SearchOffers(string keyword, int freelance)
         {
-            return bjDB.JobOffers.Where(t => t.Title.ToLower().Contains(keyword.ToLower()) || t.Positivism.ToLower().Contains(keyword.ToLower()) || t.Negativism.ToLower().Contains(keyword.ToLower()))
-                .Where(t => t.FreelanceYn == freelanceYn)
+            var q = bjDB.JobOffers.Where(t => t.Title.ToLower().Contains(keyword.ToLower()) || t.Positivism.ToLower().Contains(keyword.ToLower()) || t.Negativism.ToLower().Contains(keyword.ToLower()))
                 .Select(t => new JobOffer
                 {
                     Id = t.Id,
@@ -228,7 +227,12 @@ namespace BombaJob.Database.ViewModel
                     ReadYn = t.ReadYn,
                     SentMessageYn = t.SentMessageYn,
                     Title = t.Title
-                }).ToList();
+                });
+            if (freelance == 1)
+                q.Where(t => t.FreelanceYn == true);
+            else if (freelance == 2)
+                q.Where(t => t.FreelanceYn == false);
+            return q.ToList();
         }
         #endregion
 

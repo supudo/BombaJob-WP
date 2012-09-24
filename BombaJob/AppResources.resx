@@ -297,4 +297,13 @@
   <data name="search_Freelance" xml:space="preserve">
     <value>Проект/Freelance</value>
   </data>
+  <data name="freelance_all" xml:space="preserve">
+    <value>Навсякъде</value>
+  </data>
+  <data name="freelance_no" xml:space="preserve">
+    <value>Без Проект/Freelance</value>
+  </data>
+  <data name="freelance_only" xml:space="preserve">
+    <value>Само Проект/Freelance</value>
+  </data>
 </root>

@@ -12,11 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using BombaJob.Utilities;
+using BombaJob.Sync;
 
 namespace BombaJob.Utilities.Views
 {
     public partial class Search : BombaJobBasePage
     {
+        private Synchronization syncManager;
+
         public Search()
         {
             InitializeComponent();
@@ -26,23 +29,44 @@ namespace BombaJob.Utilities.Views
 
         void Search_Loaded(object sender, RoutedEventArgs e)
         {
-            base.BuildApplicationBar();
-
-            var brush = new ImageBrush();
-            brush.ImageSource = new BitmapImage(new Uri(@"../images/btnboom.png", UriKind.Relative));
-            this.btnSearch.Background = brush;
-            this.btnSearch.Content = AppResources.search_Search;
-            this.chkFreelance.Content = AppResources.search_Freelance;
+            List<String> fl = new List<string>();
+            fl.Add(AppResources.freelance_all);
+            fl.Add(AppResources.freelance_all);
+            fl.Add(AppResources.freelance_no);
+            this.chkFreelanceYn.ItemsSource = fl;
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private void searchOK_Click(object sender, EventArgs e)
         {
             if (AppSettings.ConfOnlineSearch)
             {
-                NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelance.IsChecked, UriKind.Relative));
+                if (this.syncManager == null)
+                    this.syncManager = new Synchronization();
+                this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SyncError);
+                this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SyncComplete);
+                this.syncManager.DoSearch(this.txtKeyword.Text, 0);
             }
             else
-                NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelance.IsChecked, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelanceYn.SelectedIndex, UriKind.Relative));
+        }
+
+        private void searchCancel_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
+        }
+
+        void syncManager_SyncComplete(object sender, BombaJobEventArgs e)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelanceYn.SelectedIndex, UriKind.Relative));
+            });
+        }
+
+        void syncManager_SyncError(object sender, BombaJobEventArgs e)
+        {
+            if (e.IsError)
+                MessageBox.Show(e.ErrorMessage);
         }
     }
 }

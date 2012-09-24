@@ -7,11 +7,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:bj="clr-namespace:BombaJob.Utilities"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
   
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -33,9 +34,25 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBox Name="txtKeyword" HorizontalAlignment="Left" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-            <CheckBox Name="chkFreelance" Content="Freelance" HorizontalAlignment="Left" VerticalAlignment="Top" Height="72" Width="456" Margin="0,69,0,0" Foreground="Black" />
-            <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Height="128" Width="456" Margin="0,144,0,0"  BorderBrush="Transparent" Click="btnSearch_Click" />
+            <StackPanel>
+                <toolkit:ListPicker x:Name="chkFreelanceYn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="9,69,0,0" Foreground="Black" BorderBrush="#BF000000" />
+            </StackPanel>
         </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton 
+                x:Name="btnSearchOK" 
+                IconUri="images/menu/tb-forms-ok.png" 
+                Text="ok" 
+                Click="searchOK_Click"/>
+            <shell:ApplicationBarIconButton 
+                x:Name="btnSearchCancel" 
+                IconUri="/images/menu/tb-forms-cancel.png" 
+                Text="cancel" 
+                Click="searchCancel_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </bj:BombaJobBasePage>

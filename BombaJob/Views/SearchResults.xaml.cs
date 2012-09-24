@@ -24,9 +24,9 @@ namespace BombaJob.Views
 
         void SearchResults_Loaded(object sender, RoutedEventArgs e)
         {
-            string keyword = "", freelanceYn = "";
-            if (NavigationContext.QueryString.TryGetValue("k", out keyword) && NavigationContext.QueryString.TryGetValue("f", out freelanceYn))
-                this.offersList.ItemsSource = App.DbViewModel.SearchOffers(keyword, bool.Parse(freelanceYn));
+            string keyword = "", freelance = "";
+            if (NavigationContext.QueryString.TryGetValue("k", out keyword) && NavigationContext.QueryString.TryGetValue("f", out freelance))
+                this.offersList.ItemsSource = App.DbViewModel.SearchOffers(keyword, int.Parse(freelance));
             else
                 NavigationService.Navigate(new Uri("/Views/Search.xaml", UriKind.Relative));
         }

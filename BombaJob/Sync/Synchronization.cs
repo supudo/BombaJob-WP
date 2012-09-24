@@ -24,28 +24,18 @@ namespace BombaJob.Sync
         {
             ServiceOpTexts,
             ServiceOpCategories,
-            ServiceOpNewestOffers
+            ServiceOpNewestOffers,
+            ServiceOpSearch
         }
 
+        #region Constructor
         public Synchronization()
         {
             this._networkHelper = new NetworkHelper();
             this._networkHelper.DownloadComplete += new NetworkHelper.EventHandler(_networkHelper_DownloadComplete);
             this._networkHelper.DownloadError += new NetworkHelper.EventHandler(_networkHelper_DownloadError);
         }
-
-        public void StartSync()
-        {
-            this.syncTexts();
-        }
-
-        private void SynchronizationComplete()
-        {
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-            {
-                SyncComplete(this, new BombaJobEventArgs(false, "", ""));
-            });
-        }
+        #endregion
 
         #region Dispatcher
         private void dispatchDownload(string xmlContent)
@@ -61,9 +51,20 @@ namespace BombaJob.Sync
                 case ServiceOp.ServiceOpNewestOffers:
                     this.doNewestOffers(xmlContent);
                     break;
+                case ServiceOp.ServiceOpSearch:
+                    this.doJobOffers(xmlContent);
+                    break;
                 default:
                     break;
             }
+        }
+        #endregion
+
+        #region Public
+        public void DoSearch(string keyword, int freelance)
+        {
+            this.currentOp = ServiceOp.ServiceOpSearch;
+            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=searchOffers?keyword=" + keyword + "&freelance=" + freelance);
         }
         #endregion
 
@@ -87,7 +88,15 @@ namespace BombaJob.Sync
         }
         #endregion
 
-        #region Network Events
+        #region Events
+        private void SynchronizationComplete()
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                SyncComplete(this, new BombaJobEventArgs(false, "", ""));
+            });
+        }
+
         void _networkHelper_DownloadComplete(object sender, BombaJobEventArgs e)
         {
             if (!e.IsError)
@@ -104,6 +113,11 @@ namespace BombaJob.Sync
         #endregion
 
         #region Initial Synchronization
+        public void StartSync()
+        {
+            this.syncTexts();
+        }
+
         private void doTexts(string xmlContent)
         {
             XDocument doc = XDocument.Parse(xmlContent);
@@ -170,6 +184,38 @@ namespace BombaJob.Sync
         #region Parsers
         private void doJobOffers(string xmlContent)
         {
+            try
+            {
+                XDocument doc = XDocument.Parse(xmlContent);
+                var jobs = from job in doc.Descendants("job")
+                           select new JobOffers
+                           {
+                               OfferId = int.Parse(job.Attribute("id").Value),
+                               CategoryId = int.Parse(job.Attribute("cid").Value),
+                               HumanYn = int.Parse(job.Attribute("hm").Value) == 1,
+                               FreelanceYn = int.Parse(job.Attribute("fyn").Value) == 1,
+                               Title = job.Element("jottl").Value,
+                               Email = job.Element("joem").Value,
+                               CategoryTitle = job.Element("jocat").Value,
+                               Positivism = job.Element("jopos").Value,
+                               Negativism = job.Element("joneg").Value,
+                               PublishDate = DateTime.ParseExact(job.Element("jodt").Value, AppSettings.DateTimeFormat, null),
+                               Icon = ((int.Parse(job.Attribute("hm").Value) == 1) ? "iconperson" : "iconcompany"),
+                           };
+                using (BombaJobDataContext db = new BombaJobDataContext(AppSettings.DBConnectionString))
+                {
+                    foreach (JobOffers t in jobs)
+                        App.DbViewModel.AddJobOffer(t);
+                }
+            }
+            catch (Exception e)
+            {
+                AppSettings.LogThis("Synchronization - doJobOffers - " + e.ToString());
+            }
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                SyncComplete(this, new BombaJobEventArgs(false, "", ""));
+            });
         }
         #endregion
     }

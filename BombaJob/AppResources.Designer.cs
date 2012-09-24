@@ -79,6 +79,33 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Навсякъде.
+        /// </summary>
+        public static string freelance_all {
+            get {
+                return ResourceManager.GetString("freelance_all", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Без Проект/Freelance.
+        /// </summary>
+        public static string freelance_no {
+            get {
+                return ResourceManager.GetString("freelance_no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Само Проект/Freelance.
+        /// </summary>
+        public static string freelance_only {
+            get {
+                return ResourceManager.GetString("freelance_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Това действие ще затвори текущото приложение и ще отвори Internet Explorer. Сигурни ли сте?.
         /// </summary>
         public static string linkClicked {
