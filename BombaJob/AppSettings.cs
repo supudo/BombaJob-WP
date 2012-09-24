@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace BombaJob
 {
@@ -52,10 +53,10 @@ namespace BombaJob
         public static bool ConfShowCategories = true;
         public static bool ConfShowBanners = true;
 
-		public static string TwitterOAuthConsumerKey = "OVvHQ1wio8LZklS5mRUuA";
-		public static string TwitterOAuthConsumerSecret = "zZm0RsfzkLpF3FYnxcM3BDZdxHA6sPLoPiTcBvohUEo";
-		public static string FacebookAppID = "162884250446512";
-        public static string FacebookAppSecret = "a082d8bbc8e98cf63f8a1711ccbafe82";
+		public static string TwitterOAuthConsumerKey = "";
+		public static string TwitterOAuthConsumerSecret = "";
+		public static string FacebookAppID = "";
+        public static string FacebookAppSecret = "";
 
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
@@ -95,6 +96,50 @@ namespace BombaJob
             date += " ";
             date += AppResources.ResourceManager.GetString("monthShort_" + dt.Month);
             return date;
+        }
+
+        public static string Hyperlinkify(string strvar)
+        {
+            string final = strvar;
+
+            Regex regex = new Regex(@"<nolink>(.*?)</nolink>",
+                          RegexOptions.IgnoreCase | RegexOptions.Singleline |
+                          RegexOptions.CultureInvariant |
+                          RegexOptions.IgnorePatternWhitespace |
+                          RegexOptions.Compiled);
+
+            MatchCollection theMatches = regex.Matches(strvar);
+
+            for (int index = 0; index < theMatches.Count; index++)
+                final = final.Replace(theMatches[index].ToString(), theMatches[index].ToString().Replace(".", "[[[pk:period]]]"));
+
+            regex = new Regex(@"<a(.*?)</a>", RegexOptions.IgnoreCase |
+                    RegexOptions.Singleline | RegexOptions.CultureInvariant |
+                    RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+
+            theMatches = regex.Matches(final);
+
+            for (int index = 0; index < theMatches.Count; index++)
+            {
+                final = final.Replace(theMatches[index].ToString(),
+                        theMatches[index].ToString().Replace(".", "[[[pk:period]]]"));
+            }
+
+            final = Regex.Replace(final, @"(?<=\d)\.(?=\d)", "[[[pk:period]]]");
+
+            Regex tags = new Regex(@"([a-zA-Z0-9\:/\-]*[a-zA-Z0-9\-_]\" +
+                         @".[a-zA-Z0-9\-_][a-zA-Z0-9\-_][a-zA-Z0-9\?\" +
+                         @"=&#_\-/\.]*[^<>,;\.\s\)\(\]\[\""])");
+
+            final = tags.Replace(final, "<a href=\"http://$&\">$&</a>");
+            final = final.Replace("http://https://", "https://");
+            final = final.Replace("http://http://", "http://");
+
+            final = final.Replace("[[[pk:period]]]", ".");
+            final = final.Replace("<nolink>", "");
+            final = final.Replace("</nolink>", "");
+
+            return final;
         }
     }
 }

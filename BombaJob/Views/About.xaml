@@ -32,7 +32,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,12">
-            <phone:WebBrowser Name="webView" Loaded="WebBrowser_OnLoaded" Navigating="WebView_Navigating"></phone:WebBrowser>
+            <RichTextBox Name="rtbAbout" TextWrapping="Wrap" Foreground="#FF000000" FontSize="24" Margin="0,0,0,20" />
         </Grid>
     </Grid>
 

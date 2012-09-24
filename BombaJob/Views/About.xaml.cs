@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using BombaJob.Utilities;
+using BombaJob.Utilities.Extensions;
 
 namespace BombaJob.Views
 {
@@ -20,18 +21,14 @@ namespace BombaJob.Views
         {
             InitializeComponent();
             this.pageTitle.Text = AppResources.menu_About;
-            this.webView.Loaded += WebBrowser_OnLoaded;
-            this.webView.Navigating += WebView_Navigating;
+            this.Loaded += new RoutedEventHandler(About_Loaded);
         }
 
-        private void WebBrowser_OnLoaded(object sender, RoutedEventArgs e)
+        void About_Loaded(object sender, RoutedEventArgs e)
         {
-            this.webView.NavigateToString(App.DbViewModel.GetTextContent(35));
-        }
-
-        void WebView_Navigating(object sender, NavigatingEventArgs e)
-        {
-            MessageBox.Show(AppResources.linkClicked);
+            string content = AppSettings.Hyperlinkify(App.DbViewModel.GetTextContent(35));
+            content = content.Replace("<br />", "");
+            RichTextBoxExtensions.SetLinkedText(this.rtbAbout, content);
         }
     }
 }
