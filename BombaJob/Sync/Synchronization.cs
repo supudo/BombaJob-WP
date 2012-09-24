@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Net;
 using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Xml.Linq;
+using System.Threading;
 using BombaJob.Database.Context;
 using BombaJob.Database.Tables;
 using BombaJob.Utilities.Network;
@@ -28,6 +30,8 @@ namespace BombaJob.Sync
             ServiceOpNewestOffers,
             ServiceOpSearch
         }
+
+        BackgroundWorker bgWorker;
 
         #region Constructor
         public Synchronization()
@@ -69,6 +73,29 @@ namespace BombaJob.Sync
             postArray.Add("keyword", keyword);
             postArray.Add("freelance", "" + freelance);
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=searchOffers", postArray);
+        }
+
+        public void LoadOffersInBackground()
+        {
+            this.bgWorker = new BackgroundWorker();
+            RunProcess();
+        }
+
+        private void RunProcess()
+        {
+            this.bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_RunWorkerCompleted);
+            this.bgWorker.DoWork += new DoWorkEventHandler(bgWorker_DoWork);
+            this.bgWorker.RunWorkerAsync();
+        }
+
+        void bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+        }
+
+        void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error == null)
+                this.dispatchDownload(e.Result.ToString());
         }
         #endregion
 
