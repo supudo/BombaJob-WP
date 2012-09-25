@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using BombaJob.Utilities;
+using BombaJob.Sync;
 
 namespace BombaJob.Utilities.Views
 {
@@ -31,6 +32,9 @@ namespace BombaJob.Utilities.Views
             this.panOffers.Header = AppResources.menu_Offers;
             this.categoriesList.ItemsSource = App.DbViewModel.GetCategories(true);
             this.offersList.ItemsSource = App.DbViewModel.GetOffers(true);
+            if (this.syncManager == null)
+                this.syncManager = new Synchronization();
+            this.syncManager.LoadOffersInBackground();
         }
 
         private void Categories_SelectionChanged(object sender, SelectionChangedEventArgs e)

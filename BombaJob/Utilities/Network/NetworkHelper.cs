@@ -19,14 +19,18 @@ namespace BombaJob.Utilities.Network
         public delegate void EventHandler(Object sender, BombaJobEventArgs e);
         public event EventHandler DownloadComplete;
         public event EventHandler DownloadError;
+        public event EventHandler DownloadInBackgroundComplete;
 
         WebClient webClient;
+
+        public bool InBackground;
 
         #region Constructor
         public NetworkHelper()
         {
             this.webClient = new WebClient();
             this.webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
+            this.InBackground = false;
         }
         #endregion
 
@@ -57,6 +61,8 @@ namespace BombaJob.Utilities.Network
             {
                 if (e.Error != null)
                     DownloadError(this, new BombaJobEventArgs(true, e.Error.Message, ""));
+                else if (this.InBackground)
+                    DownloadInBackgroundComplete(this, new BombaJobEventArgs(false, "", e.Result));
                 else
                     DownloadComplete(this, new BombaJobEventArgs(false, "", e.Result));
             });

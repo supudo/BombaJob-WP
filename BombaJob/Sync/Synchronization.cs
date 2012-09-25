@@ -28,7 +28,8 @@ namespace BombaJob.Sync
             ServiceOpTexts,
             ServiceOpCategories,
             ServiceOpNewestOffers,
-            ServiceOpSearch
+            ServiceOpSearch,
+            ServiceOpJobs
         }
 
         BackgroundWorker bgWorker;
@@ -38,6 +39,7 @@ namespace BombaJob.Sync
         {
             this._networkHelper = new NetworkHelper();
             this._networkHelper.DownloadComplete += new NetworkHelper.EventHandler(_networkHelper_DownloadComplete);
+            this._networkHelper.DownloadInBackgroundComplete += new NetworkHelper.EventHandler(_networkHelper_DownloadInBackgroundComplete);
             this._networkHelper.DownloadError += new NetworkHelper.EventHandler(_networkHelper_DownloadError);
         }
         #endregion
@@ -59,6 +61,9 @@ namespace BombaJob.Sync
                 case ServiceOp.ServiceOpSearch:
                     this.doJobOffers(xmlContent);
                     break;
+                case ServiceOp.ServiceOpJobs:
+                    this.doJobOffers(xmlContent);
+                    break;
                 default:
                     break;
             }
@@ -72,6 +77,7 @@ namespace BombaJob.Sync
             Dictionary<string, string> postArray = new Dictionary<string, string>();
             postArray.Add("keyword", keyword);
             postArray.Add("freelance", "" + freelance);
+            this._networkHelper.InBackground = false;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=searchOffers", postArray);
         }
 
@@ -83,19 +89,14 @@ namespace BombaJob.Sync
 
         private void RunProcess()
         {
-            this.bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_RunWorkerCompleted);
             this.bgWorker.DoWork += new DoWorkEventHandler(bgWorker_DoWork);
             this.bgWorker.RunWorkerAsync();
         }
 
         void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-        }
-
-        void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error == null)
-                this.dispatchDownload(e.Result.ToString());
+            this._networkHelper.InBackground = true;
+            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getJobs");
         }
         #endregion
 
@@ -103,18 +104,21 @@ namespace BombaJob.Sync
         private void syncTexts()
         {
             this.currentOp = ServiceOp.ServiceOpTexts;
+            this._networkHelper.InBackground = false;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getTextContent");
         }
 
         private void syncCategories()
         {
             this.currentOp = ServiceOp.ServiceOpCategories;
+            this._networkHelper.InBackground = false;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getCategories");
         }
 
         private void syncNewestOffers()
         {
             this.currentOp = ServiceOp.ServiceOpNewestOffers;
+            this._networkHelper.InBackground = false;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getNewJobs");
         }
         #endregion
@@ -132,6 +136,15 @@ namespace BombaJob.Sync
         {
             if (!e.IsError)
                 this.dispatchDownload(e.XmlContent);
+        }
+
+        void _networkHelper_DownloadInBackgroundComplete(object sender, BombaJobEventArgs e)
+        {
+            if (!e.IsError)
+            {
+                this.currentOp = ServiceOp.ServiceOpJobs;
+                this.dispatchDownload(e.XmlContent);
+            }
         }
 
         void _networkHelper_DownloadError(object sender, BombaJobEventArgs e)
@@ -243,10 +256,13 @@ namespace BombaJob.Sync
             {
                 AppSettings.LogThis("Synchronization - doJobOffers - " + e.ToString());
             }
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            if (this.currentOp != ServiceOp.ServiceOpJobs)
             {
-                SyncComplete(this, new BombaJobEventArgs(false, "", ""));
-            });
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    SyncComplete(this, new BombaJobEventArgs(false, "", ""));
+                });
+            }
         }
         #endregion
     }
