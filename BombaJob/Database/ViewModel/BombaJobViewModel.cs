@@ -133,7 +133,7 @@ namespace BombaJob.Database.ViewModel
             {
                 CategoryID = t.CategoryId,
                 Title = t.Title,
-                OffersCount = t.JobOffers.Where(j => j.HumanYn == humanYn).Count()
+                OffersCount = t.OffersCount
             }).ToList();
         }
 

@@ -27,30 +27,26 @@ namespace BombaJob.Utilities.Views
         void Post_Loaded(object sender, RoutedEventArgs e)
         {
             List<String> fl = new List<string>();
-            fl.Add(AppResources.offer_iam_title);
             fl.Add(AppResources.offer_iam_human);
             fl.Add(AppResources.offer_iam_company);
             this.ddHuman.ItemsSource = fl;
 
             fl = new List<string>();
-            fl.Add(AppResources.offer_FreelanceYn);
             fl.Add(AppResources.freelance_all);
             fl.Add(AppResources.freelance_only);
             fl.Add(AppResources.freelance_no);
             this.ddFreelance.ItemsSource = fl;
 
             this.ddCategory.ItemsSource = App.DbViewModel.GetAllCategories();
-            this.ddCategory.Items.Add(new BombaJob.Database.Models.Category());
+            this.ddCategory.DisplayMemberPath = "Title";
 
+            this.lblHuman.Text = AppResources.offer_iam_title;
+            this.lblCategory.Text = AppResources.offer_category_title;
+            this.lblFreelance.Text = AppResources.offer_FreelanceYn;
             this.lblTitle.Text = AppResources.offer_Human_Title;
             this.lblEmail.Text = AppResources.offer_Human_Email;
             this.lblNegativ.Text = AppResources.offer_Human_Negativ;
             this.lblPositiv.Text = AppResources.offer_Human_Positiv;
-            this.btnBoom.Content = AppResources.offer_Boom;
-
-            var brush = new ImageBrush();
-            brush.ImageSource = new BitmapImage(new Uri(@"../Images/btnboom.png", UriKind.Relative));
-            this.btnBoom.Background = brush;
         }
 
         private void post_Click(object sender, EventArgs e)
