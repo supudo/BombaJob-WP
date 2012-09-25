@@ -6,12 +6,13 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:bj="clr-namespace:BombaJob.Utilities"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -31,7 +32,41 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel VerticalAlignment="Top" Margin="0,0,0,0">
+                <toolkit:ListPicker x:Name="ddHuman" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" Margin="0,70,0,0">
+                <toolkit:ListPicker x:Name="ddCategory" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" Margin="0,140,0,0">
+                <toolkit:ListPicker x:Name="ddFreelance" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
+            </StackPanel>
+            <TextBlock Name="lblTitle" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Title" Margin="10,210,0,0" Foreground="#FFFF8D00"/>
+            <TextBox Name="txtTitle" HorizontalAlignment="Stretch" Margin="0,230,0,0" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
+            <TextBlock Name="lblEmail" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Email" Margin="10,300,0,0" Foreground="#FFFF8D00"/>
+            <TextBox Name="txtEmail" HorizontalAlignment="Stretch" Margin="0,320,0,0" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
+            <TextBlock Name="lblPositiv" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Positiv" Margin="10,390,0,0" Foreground="#FFFF8D00"/>
+            <TextBox Name="txtPositiv" HorizontalAlignment="Stretch" Margin="0,410,0,0" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
+            <TextBlock Name="lblNegativ" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Negativ" Margin="10,480,0,0" Foreground="#FFFF8D00"/>
+            <TextBox Name="txtNegativ" HorizontalAlignment="Stretch" Margin="0,500,0,0" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
+            <Button Name="btnBoom" HorizontalAlignment="Stretch" Margin="0,550,0,0" VerticalAlignment="Top"></Button>
+        </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton 
+                x:Name="btnPost" 
+                IconUri="images/menu/tb-forms-ok.png" 
+                Text="OK" 
+                Click="post_Click"/>
+            <shell:ApplicationBarIconButton 
+                x:Name="btnCancel" 
+                IconUri="/images/menu/tb-forms-cancel.png" 
+                Text="Cancel" 
+                Click="cancel_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </bj:BombaJobBasePage>

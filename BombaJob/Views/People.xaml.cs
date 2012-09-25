@@ -17,6 +17,8 @@ namespace BombaJob.Utilities.Views
 {
     public partial class People : BombaJobBasePage
     {
+        Synchronization syncManager;
+
         public People()
         {
             InitializeComponent();
