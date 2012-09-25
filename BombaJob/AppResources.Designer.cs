@@ -457,11 +457,38 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Бум!.
+        /// </summary>
+        public static string offer_Boom {
+            get {
+                return ResourceManager.GetString("offer_Boom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Категория:.
         /// </summary>
         public static string offer_Category {
             get {
                 return ResourceManager.GetString("offer_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Работя в -.
+        /// </summary>
+        public static string offer_category_title {
+            get {
+                return ResourceManager.GetString("offer_category_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email за връзка:.
+        /// </summary>
+        public static string offer_Company_Email {
+            get {
+                return ResourceManager.GetString("offer_Company_Email", resourceCulture);
             }
         }
         
@@ -484,11 +511,29 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Заглавие на позицията:.
+        /// </summary>
+        public static string offer_Company_Title {
+            get {
+                return ResourceManager.GetString("offer_Company_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Проект/Freelance:.
         /// </summary>
         public static string offer_FreelanceYn {
             get {
                 return ResourceManager.GetString("offer_FreelanceYn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вашият email:.
+        /// </summary>
+        public static string offer_Human_Email {
+            get {
+                return ResourceManager.GetString("offer_Human_Email", resourceCulture);
             }
         }
         
@@ -507,6 +552,42 @@ namespace BombaJob {
         public static string offer_Human_Positiv {
             get {
                 return ResourceManager.GetString("offer_Human_Positiv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заглавие на резюмето ви:.
+        /// </summary>
+        public static string offer_Human_Title {
+            get {
+                return ResourceManager.GetString("offer_Human_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фирма.
+        /// </summary>
+        public static string offer_iam_company {
+            get {
+                return ResourceManager.GetString("offer_iam_company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Човек.
+        /// </summary>
+        public static string offer_iam_human {
+            get {
+                return ResourceManager.GetString("offer_iam_human", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Аз съм.
+        /// </summary>
+        public static string offer_iam_title {
+            get {
+                return ResourceManager.GetString("offer_iam_title", resourceCulture);
             }
         }
         

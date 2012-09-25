@@ -306,4 +306,31 @@
   <data name="freelance_only" xml:space="preserve">
     <value>Само Проект/Freelance</value>
   </data>
+  <data name="offer_Boom" xml:space="preserve">
+    <value>Бум!</value>
+  </data>
+  <data name="offer_Company_Email" xml:space="preserve">
+    <value>Email за връзка:</value>
+  </data>
+  <data name="offer_Company_Title" xml:space="preserve">
+    <value>Заглавие на позицията:</value>
+  </data>
+  <data name="offer_Human_Email" xml:space="preserve">
+    <value>Вашият email:</value>
+  </data>
+  <data name="offer_Human_Title" xml:space="preserve">
+    <value>Заглавие на резюмето ви:</value>
+  </data>
+  <data name="offer_category_title" xml:space="preserve">
+    <value>- Работя в -</value>
+  </data>
+  <data name="offer_iam_company" xml:space="preserve">
+    <value>Фирма</value>
+  </data>
+  <data name="offer_iam_human" xml:space="preserve">
+    <value>Човек</value>
+  </data>
+  <data name="offer_iam_title" xml:space="preserve">
+    <value>Аз съм</value>
+  </data>
 </root>

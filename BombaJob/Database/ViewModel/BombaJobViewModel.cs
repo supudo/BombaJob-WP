@@ -127,6 +127,16 @@ namespace BombaJob.Database.ViewModel
             bjDB.SubmitChanges();
         }
 
+        public List<Category> GetAllCategories()
+        {
+            return bjDB.Categories.OrderBy(t => t.Title).Select(t => new Category
+            {
+                CategoryID = t.CategoryId,
+                Title = t.Title,
+                OffersCount = t.JobOffers.Where(j => j.HumanYn == humanYn).Count()
+            }).ToList();
+        }
+
         public List<Category> GetCategories(bool humanYn)
         {
             return bjDB.Categories.Where(t => t.JobOffers.Any(j => j.HumanYn == humanYn)).OrderBy(t => t.Title).Select(t => new Category
