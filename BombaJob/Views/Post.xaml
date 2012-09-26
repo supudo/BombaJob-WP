@@ -17,6 +17,14 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <DataTemplate x:Name="PickerItemTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Title}" Margin="0"/>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+ 
         <Grid.Background>
             <ImageBrush ImageSource="../images/bg-pattern.png" Stretch="UniformToFill" />
         </Grid.Background>
@@ -36,15 +44,15 @@
             <Grid x:Name="ContentPanel" Margin="12,0,12,0">
                 <StackPanel VerticalAlignment="Top" Margin="0,0,0,0">
                     <TextBlock Name="lblHuman" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Human" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                    <toolkit:ListPicker x:Name="ddHuman" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="13,0" Padding="0" />
+                    <toolkit:ListPicker x:Name="ddHuman" CacheMode="BitmapCache" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="13,0" Padding="0" SelectionChanged="ddHuman_SelectionChanged" />
                 </StackPanel>
                 <StackPanel VerticalAlignment="Top" Margin="0,90,0,0">
                     <TextBlock Name="lblCategory" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Category" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                    <toolkit:ListPicker x:Name="ddCategory" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" />
+                    <toolkit:ListPicker x:Name="ddCategory" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" />
                 </StackPanel>
                 <StackPanel VerticalAlignment="Top" Margin="0,180,0,0">
                     <TextBlock Name="lblFreelance" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Freelance" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                    <toolkit:ListPicker x:Name="ddFreelance" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" />
+                    <toolkit:ListPicker x:Name="ddFreelance" CacheMode="BitmapCache" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" />
                 </StackPanel>
                 <TextBlock Name="lblTitle" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Title" Margin="10,270,0,0" Foreground="#FFFF8D00"/>
                 <TextBox Name="txtTitle" HorizontalAlignment="Stretch" Margin="0,290,0,0" MaxLength="255" VerticalAlignment="Top" BorderBrush="#BF000000" />

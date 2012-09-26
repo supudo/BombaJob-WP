@@ -475,7 +475,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - Работя в -.
+        ///   Looks up a localized string similar to Работя в:.
         /// </summary>
         public static string offer_category_title {
             get {

@@ -89,6 +89,7 @@
     <Compile Include="Sync\Synchronization.cs" />
     <Compile Include="Utilities\BombaJobEventArgs.cs" />
     <Compile Include="Utilities\BombaJobBasePage.cs" />
+    <Compile Include="Utilities\BombaJobListPickerItem.cs" />
     <Compile Include="Utilities\Converters\OfferDateLongConverter.cs" />
     <Compile Include="Utilities\Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Utilities\Network\NetworkHelper.cs" />

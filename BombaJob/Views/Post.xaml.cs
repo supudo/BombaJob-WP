@@ -26,27 +26,39 @@ namespace BombaJob.Utilities.Views
 
         void Post_Loaded(object sender, RoutedEventArgs e)
         {
-            List<String> fl = new List<string>();
-            fl.Add(AppResources.offer_iam_human);
-            fl.Add(AppResources.offer_iam_company);
-            this.ddHuman.ItemsSource = fl;
+            List<string> fl = new List<string>();
+            this.ddHuman.ItemsSource = new List<string>() { AppResources.offer_iam_human, AppResources.offer_iam_company };
+            this.ddHuman.FullModeHeader = AppResources.offer_iam_title;
 
             fl = new List<string>();
-            fl.Add(AppResources.freelance_all);
-            fl.Add(AppResources.freelance_only);
-            fl.Add(AppResources.freelance_no);
-            this.ddFreelance.ItemsSource = fl;
+            this.ddFreelance.ItemsSource = new List<string>() { AppResources.freelance_only, AppResources.freelance_no };
+            this.ddFreelance.FullModeHeader = AppResources.offer_FreelanceYn;
 
             this.ddCategory.ItemsSource = App.DbViewModel.GetAllCategories();
-            this.ddCategory.DisplayMemberPath = "Title";
+            this.ddCategory.FullModeHeader = AppResources.offer_Category;
 
             this.lblHuman.Text = AppResources.offer_iam_title;
-            this.lblCategory.Text = AppResources.offer_category_title;
+            this.lblCategory.Text = AppResources.offer_Category;
             this.lblFreelance.Text = AppResources.offer_FreelanceYn;
-            this.lblTitle.Text = AppResources.offer_Human_Title;
-            this.lblEmail.Text = AppResources.offer_Human_Email;
-            this.lblNegativ.Text = AppResources.offer_Human_Negativ;
-            this.lblPositiv.Text = AppResources.offer_Human_Positiv;
+            this.SetLabels(true);
+        }
+
+        private void SetLabels(bool humanYn)
+        {
+            if (humanYn)
+            {
+                this.lblTitle.Text = AppResources.offer_Human_Title;
+                this.lblEmail.Text = AppResources.offer_Human_Email;
+                this.lblNegativ.Text = AppResources.offer_Human_Negativ;
+                this.lblPositiv.Text = AppResources.offer_Human_Positiv;
+            }
+            else
+            {
+                this.lblTitle.Text = AppResources.offer_Company_Title;
+                this.lblEmail.Text = AppResources.offer_Company_Email;
+                this.lblNegativ.Text = AppResources.offer_Company_Negativ;
+                this.lblPositiv.Text = AppResources.offer_Company_Positiv;
+            }
         }
 
         private void post_Click(object sender, EventArgs e)
@@ -56,6 +68,11 @@ namespace BombaJob.Utilities.Views
         private void cancel_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
+        }
+
+        private void ddHuman_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetLabels(this.ddHuman.SelectedIndex == 0);
         }
     }
 }

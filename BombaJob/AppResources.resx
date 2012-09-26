@@ -322,7 +322,7 @@
     <value>Заглавие на резюмето ви:</value>
   </data>
   <data name="offer_category_title" xml:space="preserve">
-    <value>- Работя в -</value>
+    <value>Работя в:</value>
   </data>
   <data name="offer_iam_company" xml:space="preserve">
     <value>Фирма</value>
