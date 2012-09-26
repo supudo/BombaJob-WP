@@ -11,7 +11,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -52,4 +52,30 @@
             </ScrollViewer>
         </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton 
+                x:Name="btBack" 
+                IconUri="/images/menu/tb-back.png" 
+                Text="Back" 
+                Click="back_Click"/>
+            <shell:ApplicationBarIconButton 
+                x:Name="btEM" 
+                IconUri="images/menu/tb-share-email.png" 
+                Text="Email" 
+                Click="shareEmail_Click"/>
+            <shell:ApplicationBarIconButton 
+                x:Name="btnFB" 
+                IconUri="images/menu/tb-share-facebook.png" 
+                Text="Facebook" 
+                Click="shareFacebook_Click"/>
+            <shell:ApplicationBarIconButton 
+                x:Name="btnTW" 
+                IconUri="images/menu/tb-share-twitter.png" 
+                Text="Twitter" 
+                Click="shareTwitter_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
 </bj:BombaJobBasePage>

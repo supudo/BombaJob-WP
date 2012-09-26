@@ -185,15 +185,24 @@
     <Content Include="Images\Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Menu\tb-back.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Menu\tb-forms-ok.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\tb-forms-cancel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\Menu\tb-share-email.png" />
-    <Resource Include="Images\Menu\tb-share-facebook.png" />
-    <Resource Include="Images\Menu\tb-share-twitter.png" />
+    <Content Include="Images\Menu\tb-share-email.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\tb-share-facebook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\tb-share-twitter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\btnboom.png" />
     <Resource Include="Images\iconcompany.png" />
     <Resource Include="Images\iconperson.png" />

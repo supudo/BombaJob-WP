@@ -27,12 +27,6 @@ namespace BombaJob.Utilities.Views
         {
             InitializeComponent();
             this.pageTitle.Text = AppResources.appName;
-            this.Loaded += new RoutedEventHandler(OfferDetails_Loaded);
-        }
-
-        void OfferDetails_Loaded(object sender, RoutedEventArgs e)
-        {
-            base.BuildApplicationBar();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -61,8 +55,32 @@ namespace BombaJob.Utilities.Views
                 NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
         }
 
+        private void back_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void shareEmail_Click(object sender, EventArgs e)
+        {
+            this.emailPopup();
+        }
+
+        private void shareFacebook_Click(object sender, EventArgs e)
+        {
+            this.shareFacebook();
+        }
+
+        private void shareTwitter_Click(object sender, EventArgs e)
+        {
+            this.shareTwitter();
+        }
+
         #region Email
-        private void shareEmail()
+        private void emailPopup()
+        {
+        }
+
+        private void sendEmail()
         {
             string emailBody = "";
             emailBody += this.currentOffer.CategoryTitle + "<br/><br/>";
@@ -89,6 +107,18 @@ namespace BombaJob.Utilities.Views
             emailComposeTask.Body = emailBody;
             emailComposeTask.To = "";
             emailComposeTask.Show();
+        }
+        #endregion
+
+        #region Facebook
+        private void shareFacebook()
+        {
+        }
+        #endregion
+
+        #region Twitter
+        private void shareTwitter()
+        {
         }
         #endregion
     }
