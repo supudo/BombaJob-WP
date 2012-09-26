@@ -26,6 +26,7 @@ namespace BombaJob.Views
 
         void About_Loaded(object sender, RoutedEventArgs e)
         {
+            base.BuildApplicationBar();
             string content = AppSettings.Hyperlinkify(App.DbViewModel.GetTextContent(35));
             content = content.Replace("<br />", "");
             RichTextBoxExtensions.SetLinkedText(this.rtbAbout, content);
