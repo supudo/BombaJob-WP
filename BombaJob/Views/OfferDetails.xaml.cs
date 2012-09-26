@@ -12,6 +12,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
+using BombaJob.Database.Models;
 using BombaJob.Utilities;
 using BombaJob.Utilities.Extensions;
 
@@ -19,6 +21,8 @@ namespace BombaJob.Utilities.Views
 {
     public partial class OfferDetails : BombaJobBasePage
     {
+        JobOffer currentOffer;
+
         public OfferDetails()
         {
             InitializeComponent();
@@ -39,22 +43,53 @@ namespace BombaJob.Utilities.Views
                 int offerID = int.Parse(oid);
                 bool humanYn = bool.Parse(h);
                 AppSettings.LogThis("Offer id = " + offerID);
-                BombaJob.Database.Models.JobOffer jo = App.DbViewModel.GetOffer(offerID);
-                this.pageTitle.Text = jo.Title;
+                this.currentOffer = App.DbViewModel.GetOffer(offerID);
+                this.pageTitle.Text = this.currentOffer.Title;
 
-                this.txtCategory.Text = jo.CategoryTitle;
-                this.txtDate.Text = AppSettings.DoLongDate(jo.PublishDate);
+                this.txtCategory.Text = this.currentOffer.CategoryTitle;
+                this.txtDate.Text = AppSettings.DoLongDate(this.currentOffer.PublishDate);
 
                 this.txtFreelanceLabel.Text = AppResources.offer_FreelanceYn;
-                this.txtFreelance.Text = ((jo.FreelanceYn) ? AppResources.yes : AppResources.no);
+                this.txtFreelance.Text = ((this.currentOffer.FreelanceYn) ? AppResources.yes : AppResources.no);
 
                 this.txtNegativLabel.Text = ((humanYn) ? AppResources.offer_Human_Negativ : AppResources.offer_Company_Negativ);
-                RichTextBoxExtensions.SetLinkedText(this.rtbNegativ, AppSettings.Hyperlinkify(jo.Negativism));
+                RichTextBoxExtensions.SetLinkedText(this.rtbNegativ, AppSettings.Hyperlinkify(this.currentOffer.Negativism));
                 this.txtPositivLabel.Text = ((humanYn) ? AppResources.offer_Human_Positiv : AppResources.offer_Company_Positiv);
-                RichTextBoxExtensions.SetLinkedText(this.rtbPositiv, AppSettings.Hyperlinkify(jo.Positivism));
+                RichTextBoxExtensions.SetLinkedText(this.rtbPositiv, AppSettings.Hyperlinkify(this.currentOffer.Positivism));
             }
             else
                 NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
         }
+
+        #region Email
+        private void shareEmail()
+        {
+            string emailBody = "";
+            emailBody += this.currentOffer.CategoryTitle + "<br/><br/>";
+            emailBody += "<b>" + this.currentOffer.Title + "</b><br/><br/>";
+            emailBody += "<i>" + AppSettings.DoLongDate(this.currentOffer.PublishDate) + "</i><br/><br/>";
+            if (this.currentOffer.FreelanceYn)
+                emailBody += AppResources.freelance_only + "<br/><br/>";
+            else
+                emailBody += AppResources.freelance_no + "<br/><br/>";
+            if (this.currentOffer.HumanYn)
+            {
+                emailBody += "<b>" + AppResources.offer_Human_Positiv + "</b> " + this.currentOffer.Positivism + "<br/><br/>";
+                emailBody += "<b>" + AppResources.offer_Human_Negativ + "</b> " + this.currentOffer.Negativism + "<br/><br/>";
+            }
+            else
+            {
+                emailBody += "<b>" + AppResources.offer_Company_Positiv + "</b> " + this.currentOffer.Positivism + "<br/><br/>";
+                emailBody += "<b>" + AppResources.offer_Company_Negativ + "</b> " + this.currentOffer.Negativism + "<br/><br/>";
+            }
+            emailBody += "<br /><br /> Sent from BombaJob ...";
+
+            EmailComposeTask emailComposeTask = new EmailComposeTask();
+            emailComposeTask.Subject = AppResources.share_Email_Subject + " #" + this.currentOffer.OfferId;
+            emailComposeTask.Body = emailBody;
+            emailComposeTask.To = "";
+            emailComposeTask.Show();
+        }
+        #endregion
     }
 }

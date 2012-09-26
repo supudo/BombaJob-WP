@@ -691,6 +691,15 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BombaJob.bg - виж тази обява.
+        /// </summary>
+        public static string share_Email_Subject {
+            get {
+                return ResourceManager.GetString("share_Email_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ф.
         /// </summary>
         public static string shortCompany {

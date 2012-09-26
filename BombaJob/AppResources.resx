@@ -357,4 +357,7 @@
   <data name="search_Results" xml:space="preserve">
     <value>Резултати</value>
   </data>
+  <data name="share_Email_Subject" xml:space="preserve">
+    <value>BombaJob.bg - виж тази обява</value>
+  </data>
 </root>

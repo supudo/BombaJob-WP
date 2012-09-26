@@ -191,6 +191,9 @@
     <Content Include="Images\Menu\tb-forms-cancel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\Menu\tb-share-email.png" />
+    <Resource Include="Images\Menu\tb-share-facebook.png" />
+    <Resource Include="Images\Menu\tb-share-twitter.png" />
     <Resource Include="Images\btnboom.png" />
     <Resource Include="Images\iconcompany.png" />
     <Resource Include="Images\iconperson.png" />
