@@ -42,42 +42,22 @@
         <!--ContentPanel - place additional content here-->
         <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="svContent">
             <Grid x:Name="ContentPanel" Margin="12,0,12,0">
-                <TextBlock Name="lblCategory" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Category" Margin="10,180,0,0" Foreground="#FFFF8D00"/>
-                <toolkit:ListPicker x:Name="ddCategory" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,210,0,0" Padding="0" />
-                <TextBlock Name="lblHuman" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Human" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                <toolkit:ListPicker x:Name="ddHuman" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,30,0,0" Padding="0" SelectionChanged="ddHuman_SelectionChanged" />
-                <TextBlock Name="lblFreelance" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Freelance" Margin="10,90,0,0" Foreground="#FFFF8D00"/>
-                <toolkit:ListPicker x:Name="ddFreelance" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,120,0,0" Padding="0" />
-                <TextBlock Name="lblTitle" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Title" Margin="10,270,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtTitle" HorizontalAlignment="Stretch" Margin="0,290,0,0" MaxLength="255" VerticalAlignment="Top" BorderBrush="#BF000000" />
-                <TextBlock Name="lblEmail" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Email" Margin="10,360,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtEmail" HorizontalAlignment="Stretch" Margin="0,380,0,0" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-                <TextBlock Name="lblPositiv" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Positiv" Margin="10,450,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtPositiv" HorizontalAlignment="Stretch" Margin="0,470,0,0" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-                <TextBlock Name="lblNegativ" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Negativ" Margin="10,540,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtNegativ" HorizontalAlignment="Stretch" Margin="0,560,0,0" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-                <!--
-                <StackPanel VerticalAlignment="Top" Margin="0,180,0,0">
-                    <TextBlock Name="lblCategory" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Category" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                    <toolkit:ListPicker x:Name="ddCategory" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" />
+                <StackPanel>
+                    <TextBlock Name="lblHuman" Text="Human" Foreground="#FFFF8D00"/>
+                    <toolkit:ListPicker x:Name="ddHuman" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" Padding="0" SelectionChanged="ddHuman_SelectionChanged" />
+                    <TextBlock Name="lblFreelance" Text="Freelance" Foreground="#FFFF8D00"/>
+                    <toolkit:ListPicker x:Name="ddFreelance" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" Padding="0" />
+                    <TextBlock Name="lblCategory" Text="Category" Foreground="#FFFF8D00"/>
+                    <toolkit:ListPicker x:Name="ddCategory" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" Padding="0" />
+                    <TextBlock Name="lblTitle" Text="Title" Foreground="#FFFF8D00"/>
+                    <TextBox Name="txtTitle" MaxLength="255" BorderBrush="#BF000000" />
+                    <TextBlock Name="lblEmail" Text="Email" Foreground="#FFFF8D00"/>
+                    <TextBox Name="txtEmail" MaxLength="255" Width="456" BorderBrush="#BF000000" />
+                    <TextBlock Name="lblPositiv" Text="Positiv" Foreground="#FFFF8D00"/>
+                    <TextBox Name="txtPositiv" Width="456" BorderBrush="#BF000000" />
+                    <TextBlock Name="lblNegativ" Text="Negativ" Foreground="#FFFF8D00"/>
+                    <TextBox Name="txtNegativ" Width="456" BorderBrush="#BF000000" />
                 </StackPanel>
-                <StackPanel VerticalAlignment="Top" Margin="0,0,0,0">
-                    <TextBlock Name="lblHuman" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Human" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                    <toolkit:ListPicker x:Name="ddHuman" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" SelectionChanged="ddHuman_SelectionChanged" />
-                </StackPanel>
-                <StackPanel VerticalAlignment="Top" Margin="0,90,0,0">
-                    <TextBlock Name="lblFreelance" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Freelance" Margin="10,0,0,0" Foreground="#FFFF8D00"/>
-                    <toolkit:ListPicker x:Name="ddFreelance" CacheMode="BitmapCache" ItemTemplate="{StaticResource PickerItemTemplate}" FullModeItemTemplate="{StaticResource PickerItemTemplate}" Foreground="Black" BorderBrush="#BF000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="13,0" Padding="0" />
-                </StackPanel>
-                <TextBlock Name="lblTitle" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Title" Margin="10,270,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtTitle" HorizontalAlignment="Stretch" Margin="0,290,0,0" MaxLength="255" VerticalAlignment="Top" BorderBrush="#BF000000" />
-                <TextBlock Name="lblEmail" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Email" Margin="10,360,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtEmail" HorizontalAlignment="Stretch" Margin="0,380,0,0" MaxLength="255" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-                <TextBlock Name="lblPositiv" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Positiv" Margin="10,450,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtPositiv" HorizontalAlignment="Stretch" Margin="0,470,0,0" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-                <TextBlock Name="lblNegativ" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Negativ" Margin="10,540,0,0" Foreground="#FFFF8D00"/>
-                <TextBox Name="txtNegativ" HorizontalAlignment="Stretch" Margin="0,560,0,0" VerticalAlignment="Top" Width="456" BorderBrush="#BF000000" />
-                -->
             </Grid>
         </ScrollViewer>
     </Grid>
