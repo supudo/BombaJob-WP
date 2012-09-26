@@ -36,7 +36,7 @@ namespace BombaJob.Utilities.Views
             this.chkFreelanceYn.ItemsSource = fl;
         }
 
-        private void searchOK_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
             if (AppSettings.ConfOnlineSearch)
             {
@@ -50,7 +50,7 @@ namespace BombaJob.Utilities.Views
                 NavigationService.Navigate(new Uri("/Views/SearchResults.xaml?k=" + this.txtKeyword.Text + "&f=" + this.chkFreelanceYn.SelectedIndex, UriKind.Relative));
         }
 
-        private void searchCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
         }

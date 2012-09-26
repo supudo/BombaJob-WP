@@ -19,11 +19,13 @@ namespace BombaJob.Views
         public SearchResults()
         {
             InitializeComponent();
+            this.pageTitle.Text = AppResources.search_Results;
             this.Loaded += new RoutedEventHandler(SearchResults_Loaded);
         }
 
         void SearchResults_Loaded(object sender, RoutedEventArgs e)
         {
+            base.BuildApplicationBar();
             string keyword = "", freelance = "";
             if (NavigationContext.QueryString.TryGetValue("k", out keyword) && NavigationContext.QueryString.TryGetValue("f", out freelance))
                 this.offersList.ItemsSource = App.DbViewModel.SearchOffers(keyword, int.Parse(freelance));

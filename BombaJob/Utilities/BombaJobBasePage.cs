@@ -137,6 +137,7 @@ namespace BombaJob.Utilities
 
         void menuSettings_Click(object sender, EventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Views/Settings.xaml", UriKind.Relative));
         }
 
         void menuPost_Click(object sender, EventArgs e)

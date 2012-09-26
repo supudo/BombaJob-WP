@@ -93,7 +93,7 @@ namespace BombaJob.Utilities.Views
             bool hasError = true;
             if (title.Trim().Equals(""))
                 this.txtTitle.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-            else if (email.Trim().Equals(""))
+            else if (email.Trim().Equals("") || !AppSettings.ValidateEmail(email))
                 this.txtEmail.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
             else if (positivism.Trim().Equals(""))
                 this.txtPositiv.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));

@@ -65,6 +65,9 @@ namespace BombaJob
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            // Init App Settings
+            var s = AppSettings.Instance;
+
             // Initial Database setup
             using (BombaJob.Database.Context.BombaJobDataContext db = new BombaJob.Database.Context.BombaJobDataContext(AppSettings.DBConnectionString))
             {

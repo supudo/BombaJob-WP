@@ -70,6 +70,51 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In-App Email.
+        /// </summary>
+        public static string conf_InAppEmail {
+            get {
+                return ResourceManager.GetString("conf_InAppEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Начална синхронизация.
+        /// </summary>
+        public static string conf_InitSync {
+            get {
+                return ResourceManager.GetString("conf_InitSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Онлайн търсене.
+        /// </summary>
+        public static string conf_OnlineSearch {
+            get {
+                return ResourceManager.GetString("conf_OnlineSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запази лични данни.
+        /// </summary>
+        public static string conf_PrivateData {
+            get {
+                return ResourceManager.GetString("conf_PrivateData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Показвай категориите.
+        /// </summary>
+        public static string conf_ShowCategories {
+            get {
+                return ResourceManager.GetString("conf_ShowCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to В момента няма интернет връзка. Опитайте по-късно пак..
         /// </summary>
         public static string error_NoInternet {
@@ -624,6 +669,15 @@ namespace BombaJob {
         public static string search_Freelance {
             get {
                 return ResourceManager.GetString("search_Freelance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Резултати.
+        /// </summary>
+        public static string search_Results {
+            get {
+                return ResourceManager.GetString("search_Results", resourceCulture);
             }
         }
         

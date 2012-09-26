@@ -339,4 +339,22 @@
   <data name="offer_ThankYou" xml:space="preserve">
     <value>Благодарим ви!</value>
   </data>
+  <data name="conf_InAppEmail" xml:space="preserve">
+    <value>In-App Email</value>
+  </data>
+  <data name="conf_InitSync" xml:space="preserve">
+    <value>Начална синхронизация</value>
+  </data>
+  <data name="conf_OnlineSearch" xml:space="preserve">
+    <value>Онлайн търсене</value>
+  </data>
+  <data name="conf_PrivateData" xml:space="preserve">
+    <value>Запази лични данни</value>
+  </data>
+  <data name="conf_ShowCategories" xml:space="preserve">
+    <value>Показвай категориите</value>
+  </data>
+  <data name="search_Results" xml:space="preserve">
+    <value>Резултати</value>
+  </data>
 </root>

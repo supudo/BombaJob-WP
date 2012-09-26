@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.IsolatedStorage;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,11 +16,21 @@ namespace BombaJob
 {
     public sealed class AppSettings
     {
+        private static IsolatedStorageSettings isolatedStore;
         private static volatile AppSettings instance;
-        private static object syncRoot = new Object(); 
+        private static object syncRoot = new Object();
 
+        #region Constructor
         private AppSettings()
         {
+            try
+            {
+                AppSettings.isolatedStore = IsolatedStorageSettings.ApplicationSettings;
+            }
+            catch (Exception e)
+            {
+                AppSettings.LogThis("Exception while using IsolatedStorageSettings: " + e.ToString());
+            }
         }
 
         public static AppSettings Instance
@@ -37,21 +48,15 @@ namespace BombaJob
                 return instance;
             }
         }
+        #endregion
 
+        #region Variables
         public static string AppName = "BombaJob";
 
         public static string DBConnectionString = "Data Source=isostore:/BombaJob.sdf";
 
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
         public static bool InDebug = true;
-
-		public static bool ConfPrivateData = true;
-		public static bool ConfGeoLocation = false;
-        public static bool ConfInitSync = true;
-        public static bool ConfOnlineSearch = true;
-		public static bool ConfInAppEmail = false;
-        public static bool ConfShowCategories = true;
-        public static bool ConfShowBanners = true;
 
 		public static string TwitterOAuthConsumerKey = "";
 		public static string TwitterOAuthConsumerSecret = "";
@@ -61,11 +66,16 @@ namespace BombaJob
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
         public static int OffersPerPage = 20;
+        #endregion
 
+        #region Helpers
         public static void LogThis(params string[] logs)
         {
             if (AppSettings.InDebug)
+            {
                 Debugger.Log(3, "Warning", "[____BombaJob-Log] " + string.Join(" ", logs));
+                Debug.WriteLine("[____BombaJob-Log] " + string.Join(" ", logs));
+            }
         }
 
         public static string DoLongDate(DateTime dt)
@@ -141,5 +151,124 @@ namespace BombaJob
 
             return final;
         }
+
+        public static bool ValidateEmail(string email)
+        {
+            return Regex.IsMatch(email, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+        }
+        #endregion
+
+        #region Settings
+        const string ConfNamePrivateData = "ConfNamePrivateData";
+        const string ConfNameInitSync = "ConfNameInitSync";
+        const string ConfNameOnlineSearch = "ConfNameOnlineSearch";
+        const string ConfNameInAppEmail = "ConfNameInAppEmail";
+        const string ConfNameShowCategories = "ConfNameShowCategories";
+
+        const bool ConfDefaultPrivateData = true;
+        const bool ConfDefaultInitSync = true;
+        const bool ConfDefaultOnlineSearch = true;
+        const bool ConfDefaultInAppEmail = false;
+        const bool ConfDefaultShowCategories = true;
+
+        public static bool AddOrUpdateValue(string Key, Object value)
+        {
+            bool valueChanged = false;
+            if (isolatedStore.Contains(Key))
+            {
+                if (AppSettings.isolatedStore[Key] != value)
+                {
+                    AppSettings.isolatedStore[Key] = value;
+                    valueChanged = true;
+                }
+            }
+            else
+            {
+                AppSettings.isolatedStore.Add(Key, value);
+                valueChanged = true;
+            }
+            return valueChanged;
+        }
+
+        public static valueType GetValueOrDefault<valueType>(string Key, valueType defaultValue)
+        {
+            valueType value;
+            if (AppSettings.isolatedStore.Contains(Key))
+                value = (valueType)AppSettings.isolatedStore[Key];
+            else
+                value = defaultValue;
+            return value;
+        }
+
+        public static void Save()
+        {
+            isolatedStore.Save();
+        }
+
+        public static bool ConfPrivateData
+        {
+            get
+            {
+                return GetValueOrDefault<bool>(ConfNamePrivateData, ConfDefaultPrivateData);
+            }
+            set
+            {
+                AddOrUpdateValue(ConfNamePrivateData, value);
+                Save();
+            }
+        }
+
+        public static bool ConfInitSync
+        {
+            get
+            {
+                return GetValueOrDefault<bool>(ConfNameInitSync, ConfDefaultInitSync);
+            }
+            set
+            {
+                AddOrUpdateValue(ConfNameInitSync, value);
+                Save();
+            }
+        }
+
+        public static bool ConfOnlineSearch
+        {
+            get
+            {
+                return GetValueOrDefault<bool>(ConfNameOnlineSearch, ConfDefaultOnlineSearch);
+            }
+            set
+            {
+                AddOrUpdateValue(ConfNameOnlineSearch, value);
+                Save();
+            }
+        }
+
+        public static bool ConfInAppEmail
+        {
+            get
+            {
+                return GetValueOrDefault<bool>(ConfNameInAppEmail, ConfDefaultInAppEmail);
+            }
+            set
+            {
+                AddOrUpdateValue(ConfNameInAppEmail, value);
+                Save();
+            }
+        }
+
+        public static bool ConfShowCategories
+        {
+            get
+            {
+                return GetValueOrDefault<bool>(ConfNameShowCategories, ConfDefaultShowCategories);
+            }
+            set
+            {
+                AddOrUpdateValue(ConfNameShowCategories, value);
+                Save();
+            }
+        }
+        #endregion
     }
 }
