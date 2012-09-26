@@ -136,12 +136,29 @@ namespace BombaJob.Utilities.Views
         #region Facebook
         private void shareFacebook()
         {
+            string msg = "";
+            msg += this.currentOffer.Positivism;
+
+            ShareLinkTask shareLinkTask = new ShareLinkTask();
+            shareLinkTask.LinkUri = new Uri("http://www.bombajob.bg/", UriKind.Absolute);
+            shareLinkTask.Message = this.currentOffer.Title;
+            shareLinkTask.Message = msg;
+            shareLinkTask.Show();
         }
         #endregion
 
         #region Twitter
         private void shareTwitter()
         {
+            string msg = "BombaJob.bg - ";
+            msg += this.currentOffer.Title + ": http://bombajob.bg/offer/" + this.currentOffer.OfferId;
+            msg += " #bombajobbg";
+
+            ShareLinkTask shareLinkTask = new ShareLinkTask();
+            shareLinkTask.LinkUri = new Uri("http://www.bombajob.bg/", UriKind.Absolute);
+            shareLinkTask.Message = this.currentOffer.Title;
+            shareLinkTask.Message = msg;
+            shareLinkTask.Show();
         }
         #endregion
     }
