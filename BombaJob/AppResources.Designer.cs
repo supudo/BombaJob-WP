@@ -592,6 +592,24 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Има нещо изпуснато....
+        /// </summary>
+        public static string offer_MissingReqFields {
+            get {
+                return ResourceManager.GetString("offer_MissingReqFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Благодарим ви!.
+        /// </summary>
+        public static string offer_ThankYou {
+            get {
+                return ResourceManager.GetString("offer_ThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Оферти:.
         /// </summary>
         public static string offers {

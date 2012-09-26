@@ -11,8 +11,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using BombaJob.Utilities;
 using BombaJob.Sync;
+using BombaJob.Utilities;
 
 namespace BombaJob.Utilities.Views
 {

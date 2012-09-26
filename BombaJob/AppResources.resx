@@ -333,4 +333,10 @@
   <data name="offer_iam_title" xml:space="preserve">
     <value>Аз съм</value>
   </data>
+  <data name="offer_MissingReqFields" xml:space="preserve">
+    <value>Има нещо изпуснато...</value>
+  </data>
+  <data name="offer_ThankYou" xml:space="preserve">
+    <value>Благодарим ви!</value>
+  </data>
 </root>

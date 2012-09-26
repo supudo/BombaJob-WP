@@ -29,7 +29,8 @@ namespace BombaJob.Sync
             ServiceOpCategories,
             ServiceOpNewestOffers,
             ServiceOpSearch,
-            ServiceOpJobs
+            ServiceOpJobs,
+            ServiceOpPost
         }
 
         BackgroundWorker bgWorker;
@@ -65,12 +66,20 @@ namespace BombaJob.Sync
                     this.doJobOffers(xmlContent);
                     break;
                 default:
+                    SyncComplete(this, new BombaJobEventArgs(false, "", ""));
                     break;
             }
         }
         #endregion
 
         #region Public
+        public void DoPostOffer(Dictionary<string, string> postParams)
+        {
+            this.currentOp = ServiceOp.ServiceOpPost;
+            this._networkHelper.InBackground = false;
+            this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postNewJob", postParams);
+        }
+
         public void DoSearch(string keyword, int freelance)
         {
             this.currentOp = ServiceOp.ServiceOpSearch;
