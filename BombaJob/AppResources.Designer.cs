@@ -664,6 +664,24 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Затвори.
+        /// </summary>
+        public static string popup_Cancel {
+            get {
+                return ResourceManager.GetString("popup_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ОК.
+        /// </summary>
+        public static string popup_OK {
+            get {
+                return ResourceManager.GetString("popup_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Проект/Freelance.
         /// </summary>
         public static string search_Freelance {
@@ -687,6 +705,15 @@ namespace BombaJob {
         public static string search_Search {
             get {
                 return ResourceManager.GetString("search_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изпрати на email....
+        /// </summary>
+        public static string share_Email_Desc {
+            get {
+                return ResourceManager.GetString("share_Email_Desc", resourceCulture);
             }
         }
         

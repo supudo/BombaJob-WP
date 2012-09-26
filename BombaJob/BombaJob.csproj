@@ -90,6 +90,9 @@
     <Compile Include="Utilities\BombaJobEventArgs.cs" />
     <Compile Include="Utilities\BombaJobBasePage.cs" />
     <Compile Include="Utilities\BombaJobListPickerItem.cs" />
+    <Compile Include="Utilities\Controls\InputPopup.xaml.cs">
+      <DependentUpon>InputPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Converters\OfferDateLongConverter.cs" />
     <Compile Include="Utilities\Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Utilities\Network\NetworkHelper.cs" />
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utilities\Controls\InputPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

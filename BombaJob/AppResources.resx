@@ -360,4 +360,13 @@
   <data name="share_Email_Subject" xml:space="preserve">
     <value>BombaJob.bg - виж тази обява</value>
   </data>
+  <data name="popup_Cancel" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="popup_OK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="share_Email_Desc" xml:space="preserve">
+    <value>Изпрати на email...</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,6 +16,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using BombaJob.Database.Models;
 using BombaJob.Utilities;
+using BombaJob.Utilities.Controls;
 using BombaJob.Utilities.Extensions;
 
 namespace BombaJob.Utilities.Views
@@ -78,9 +80,30 @@ namespace BombaJob.Utilities.Views
         #region Email
         private void emailPopup()
         {
+            Popup popup = new Popup();
+            popup.Height = 300;
+            popup.Width = 400;
+            popup.VerticalOffset = 100;
+            InputPopup control = new InputPopup();
+            popup.Child = control;
+            popup.IsOpen = true;
+
+            control.btnOK.Click += (s, args) =>
+            {
+                popup.IsOpen = false;
+                string toEmail = control.txtValue.Text;
+
+                if (!toEmail.Equals("") && AppSettings.ValidateEmail(toEmail))
+                    this.sendEmail(toEmail);
+            };
+
+            control.btnCancel.Click += (s, args) =>
+            {
+                popup.IsOpen = false;
+            };
         }
 
-        private void sendEmail()
+        private void sendEmail(string toEmail)
         {
             string emailBody = "";
             emailBody += this.currentOffer.CategoryTitle + "<br/><br/>";
@@ -105,7 +128,7 @@ namespace BombaJob.Utilities.Views
             EmailComposeTask emailComposeTask = new EmailComposeTask();
             emailComposeTask.Subject = AppResources.share_Email_Subject + " #" + this.currentOffer.OfferId;
             emailComposeTask.Body = emailBody;
-            emailComposeTask.To = "";
+            emailComposeTask.To = toEmail;
             emailComposeTask.Show();
         }
         #endregion
