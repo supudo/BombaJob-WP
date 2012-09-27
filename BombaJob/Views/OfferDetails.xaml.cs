@@ -23,7 +23,7 @@ namespace BombaJob.Utilities.Views
 {
     public partial class OfferDetails : BombaJobBasePage
     {
-        JobOffer currentOffer;
+        private JobOffer currentOffer;
 
         public OfferDetails()
         {
@@ -136,6 +136,7 @@ namespace BombaJob.Utilities.Views
         #region Facebook
         private void shareFacebook()
         {
+            /*
             string msg = "";
             msg += this.currentOffer.Positivism;
 
@@ -144,6 +145,8 @@ namespace BombaJob.Utilities.Views
             shareLinkTask.Message = this.currentOffer.Title;
             shareLinkTask.Message = msg;
             shareLinkTask.Show();
+             * */
+            NavigationService.Navigate(new Uri("/Views/ShareFacebook.xaml", UriKind.Relative));
         }
         #endregion
 
