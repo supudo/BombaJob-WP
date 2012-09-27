@@ -78,7 +78,7 @@ namespace BombaJob.Views
 
                 var result = (IDictionary<string, object>)e.GetResultData();
                 var id = (string)result["id"];
-                var url = string.Format("/Pages/FacebookInfoPage.xaml?access_token={0}&id={1}", accessToken, id);
+                //var url = string.Format("/Pages/FacebookInfoPage.xaml?access_token={0}&id={1}", accessToken, id);
                 //Dispatcher.BeginInvoke(() => NavigationService.Navigate(new Uri(url, UriKind.Relative)));
                 _accessToken = accessToken;
                 _userId = id;
