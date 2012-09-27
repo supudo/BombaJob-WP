@@ -14,7 +14,7 @@
             <ImageBrush ImageSource="images/bg-pattern.png" Stretch="UniformToFill" />
         </Grid.Background>
         <ProgressBar HorizontalAlignment="Left" Margin="47,692,0,89" Name="progressBar" Width="383" IsIndeterminate="True" />
-        <Image Height="128" HorizontalAlignment="Center" Margin="0,100,0,0" Name="imgLogo" Stretch="Fill" VerticalAlignment="Top" Width="128" DataContext="{Binding}" Source="/BombaJob;component/Images/splash.png" />
+        <Image Height="200" HorizontalAlignment="Center" Margin="0,100,0,0" Name="imgLogo" Stretch="Fill" VerticalAlignment="Top" Width="200" DataContext="{Binding}" Source="/BombaJob;component/Images/logo-big-tr.png" />
         <TextBlock HorizontalAlignment="Center" Margin="0,656,0,114" Name="txtLoading" Text="Loading..." Width="480" Foreground="BLack" FontSize="22" TextAlignment="Center" />
     </Grid>
 
