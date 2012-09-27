@@ -8,8 +8,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using BombaJob.Database.Models;
 using BombaJob.Utilities;
 using Facebook;
 
@@ -17,8 +19,8 @@ namespace BombaJob.Views
 {
     public partial class ShareFacebook : BombaJobBasePage
     {
+        private JobOffer currentOffer;
         private readonly FacebookClient _fb = new FacebookClient();
-        private const string AppId = "162884250446512";
         private const string ExtendedPermissions = "publish_stream";
         private string _accessToken;
         private string _userId;
@@ -29,16 +31,28 @@ namespace BombaJob.Views
             InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string oid = "", h = "";
+            if (NavigationContext.QueryString.TryGetValue("oid", out oid) && NavigationContext.QueryString.TryGetValue("h", out h))
+            {
+                int offerID = int.Parse(oid);
+                bool humanYn = bool.Parse(h);
+                AppSettings.LogThis("Offer id = " + offerID);
+                this.currentOffer = App.DbViewModel.GetOffer(offerID);
+            }
+        }
+
         private void wbFacebook_Loaded(object sender, RoutedEventArgs e)
         {
-            var loginUrl = GetFacebookLoginUrl(AppId, ExtendedPermissions);
+            var loginUrl = GetFacebookLoginUrl(AppSettings.FacebookAppID, ExtendedPermissions);
             wbFacebook.Navigate(loginUrl);
         }
 
         private Uri GetFacebookLoginUrl(string appId, string extendedPermissions)
         {
             var parameters = new Dictionary<string, object>();
-            parameters["client_id"] = appId;
+            parameters["client_id"] = AppSettings.FacebookAppID;
             parameters["redirect_uri"] = "https://www.facebook.com/connect/login_success.html";
             parameters["response_type"] = "token";
             parameters["display"] = "touch";
@@ -90,9 +104,7 @@ namespace BombaJob.Views
 
         private void postMessage()
         {
-            string msg = "";
-
-            if (string.IsNullOrEmpty(msg))
+            if (this.currentOffer == null)
             {
                 MessageBox.Show("Enter message.");
                 return;
@@ -118,7 +130,11 @@ namespace BombaJob.Views
             };
 
             var parameters = new Dictionary<string, object>();
-            parameters["message"] = msg;
+            //parameters["message"] = this.currentOffer.Title;
+            parameters["name"] = this.currentOffer.Title;
+            parameters["caption"] = this.currentOffer.Positivism;
+            parameters["description"] = this.currentOffer.Negativism;
+            parameters["link"] = "http://bombajob.bg/offer/" + this.currentOffer.OfferId;
 
             fb.PostAsync("me/feed", parameters);
 

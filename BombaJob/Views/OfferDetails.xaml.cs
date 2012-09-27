@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -145,14 +146,16 @@ namespace BombaJob.Utilities.Views
             shareLinkTask.Message = this.currentOffer.Title;
             shareLinkTask.Message = msg;
             shareLinkTask.Show();
-             * */
-            NavigationService.Navigate(new Uri("/Views/ShareFacebook.xaml", UriKind.Relative));
+             */
+            NavigationService.Navigate(new Uri("/Views/ShareFacebook.xaml?oid=" + this.currentOffer.OfferId, UriKind.Relative));
         }
         #endregion
 
         #region Twitter
+
         private void shareTwitter()
         {
+            /*
             string msg = "BombaJob.bg - ";
             msg += this.currentOffer.Title + ": http://bombajob.bg/offer/" + this.currentOffer.OfferId;
             msg += " #bombajobbg";
@@ -162,6 +165,8 @@ namespace BombaJob.Utilities.Views
             shareLinkTask.Message = this.currentOffer.Title;
             shareLinkTask.Message = msg;
             shareLinkTask.Show();
+             */
+            NavigationService.Navigate(new Uri("/Views/ShareTwitter.xaml?oid=" + this.currentOffer.OfferId, UriKind.Relative));
         }
         #endregion
     }

@@ -58,14 +58,21 @@ namespace BombaJob
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
         public static bool InDebug = true;
 
-		public static string TwitterOAuthConsumerKey = "";
-		public static string TwitterOAuthConsumerSecret = "";
-		public static string FacebookAppID = "";
-        public static string FacebookAppSecret = "";
-
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
         public static int OffersPerPage = 20;
+
+        public static string FacebookAppID = "";
+        public static string FacebookAppSecret = "";
+
+        public static string TwitterRequestTokenUri = "https://api.twitter.com/oauth/request_token";
+        public static string TwitterAuthorizeUri = "https://api.twitter.com/oauth/authorize";
+        public static string TwitterAccessTokenUri = "https://api.twitter.com/oauth/access_token";
+        public static string TwitterCallbackUri = "oob";
+        public static string TwitterStatusUpdateUrl { get { return "http://api.twitter.com"; } }
+        public static string TwitterConsumerKey = "";
+        public static string TwitterConsumerKeySecret = "";
+        public static string TwitterOAuthVersion = "1.0a";
         #endregion
 
         #region Helpers
