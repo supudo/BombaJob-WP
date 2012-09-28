@@ -28,9 +28,11 @@ namespace BombaJob.Views
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string oid = "", h = "";
-            if (NavigationContext.QueryString.TryGetValue("oid", out oid) && NavigationContext.QueryString.TryGetValue("h", out h))
+            string oid = "";
+            if (NavigationContext.QueryString.TryGetValue("oid", out oid))
                 this.offerID = int.Parse(oid);
+            else
+                NavigationService.GoBack();
         }
 
         private void send_Click(object sender, EventArgs e)
