@@ -171,12 +171,14 @@ namespace BombaJob
         const string ConfNameOnlineSearch = "ConfNameOnlineSearch";
         const string ConfNameInAppEmail = "ConfNameInAppEmail";
         const string ConfNameShowCategories = "ConfNameShowCategories";
+        const string ConfNamePDEmail = "ConfNamePDEmail";
 
         const bool ConfDefaultPrivateData = true;
         const bool ConfDefaultInitSync = true;
         const bool ConfDefaultOnlineSearch = true;
         const bool ConfDefaultInAppEmail = false;
         const bool ConfDefaultShowCategories = true;
+        const string ConfDefaultPDEmail = "";
 
         public static bool AddOrUpdateValue(string Key, Object value)
         {
@@ -273,6 +275,19 @@ namespace BombaJob
             set
             {
                 AddOrUpdateValue(ConfNameShowCategories, value);
+                Save();
+            }
+        }
+
+        public static string ConfPDEmail
+        {
+            get
+            {
+                return GetValueOrDefault<string>(ConfNamePDEmail, ConfDefaultPDEmail);
+            }
+            set
+            {
+                AddOrUpdateValue(ConfNamePDEmail, value);
                 Save();
             }
         }

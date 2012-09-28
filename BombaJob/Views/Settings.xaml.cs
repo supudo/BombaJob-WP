@@ -48,6 +48,10 @@ namespace BombaJob.Views
             AppSettings.ConfOnlineSearch = (bool)this.chkOnlineSearch.IsChecked;
             AppSettings.ConfInAppEmail = (bool)this.chkInAppEmail.IsChecked;
             AppSettings.ConfShowCategories = (bool)this.chkShowCategories.IsChecked;
+
+            if (!AppSettings.ConfPrivateData)
+                AppSettings.ConfPDEmail = "";
+            
             NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
         }
 

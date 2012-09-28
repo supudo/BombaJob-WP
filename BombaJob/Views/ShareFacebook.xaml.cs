@@ -125,7 +125,7 @@ namespace BombaJob.Views
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    MessageBox.Show("Message Posted successfully");
+                    MessageBox.Show(AppResources.offer_ThankYou);
                 });
             };
 

@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using BombaJob.Database.Models;
+using BombaJob.Sync;
 using BombaJob.Utilities;
 using BombaJob.Utilities.Controls;
 using BombaJob.Utilities.Extensions;
@@ -25,6 +26,7 @@ namespace BombaJob.Utilities.Views
     public partial class OfferDetails : BombaJobBasePage
     {
         private JobOffer currentOffer;
+        private Synchronization syncManager;
 
         public OfferDetails()
         {
@@ -32,6 +34,7 @@ namespace BombaJob.Utilities.Views
             this.pageTitle.Text = AppResources.appName;
         }
 
+        #region Screen
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string oid = "", h = "";
@@ -65,7 +68,7 @@ namespace BombaJob.Utilities.Views
 
         private void shareEmail_Click(object sender, EventArgs e)
         {
-            this.emailPopup();
+            this.shareEmail();
         }
 
         private void shareFacebook_Click(object sender, EventArgs e)
@@ -77,9 +80,47 @@ namespace BombaJob.Utilities.Views
         {
             this.shareTwitter();
         }
+        #endregion
 
         #region Email
-        private void emailPopup()
+        private void shareEmail()
+        {
+            this.showEmailPopup();
+        }
+
+        private void sendEmailViaWS(string toEmail)
+        {
+            if (this.syncManager == null)
+                this.syncManager = new Synchronization();
+            this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SyncError);
+            this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SyncComplete);
+
+            Dictionary<string, string> postArray = new Dictionary<string, string>();
+            postArray.Add("oid", "" + this.currentOffer.OfferId);
+            postArray.Add("toemail", toEmail);
+            postArray.Add("fromemail", "");
+            this.syncManager.DoSendEmail(postArray);
+        }
+
+        void syncManager_SyncComplete(object sender, BombaJobEventArgs e)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                if (!e.IsError)
+                    MessageBox.Show(AppResources.offer_ThankYou);
+            });
+        }
+
+        void syncManager_SyncError(object sender, BombaJobEventArgs e)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                if (e.IsError)
+                    MessageBox.Show(e.ErrorMessage);
+            });
+        }
+
+        private void showEmailPopup()
         {
             Popup popup = new Popup();
             popup.Height = 300;
@@ -95,7 +136,12 @@ namespace BombaJob.Utilities.Views
                 string toEmail = control.txtValue.Text;
 
                 if (!toEmail.Equals("") && AppSettings.ValidateEmail(toEmail))
-                    this.sendEmail(toEmail);
+                {
+                    if (AppSettings.ConfInAppEmail)
+                        this.sendEmail(toEmail);
+                    else
+                        this.sendEmailViaWS(toEmail);
+                }
             };
 
             control.btnCancel.Click += (s, args) =>
@@ -152,7 +198,6 @@ namespace BombaJob.Utilities.Views
         #endregion
 
         #region Twitter
-
         private void shareTwitter()
         {
             /*

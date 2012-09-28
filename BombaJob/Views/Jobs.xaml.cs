@@ -34,6 +34,8 @@ namespace BombaJob.Utilities.Views
             this.panOffers.Header = AppResources.menu_Offers;
             this.categoriesList.ItemsSource = App.DbViewModel.GetCategories(false);
             this.offersList.ItemsSource = App.DbViewModel.GetOffers(false);
+            if (!AppSettings.ConfShowCategories)
+                this.jobsPanorama.DefaultItem = this.panOffers;
             if (this.syncManager == null)
                 this.syncManager = new Synchronization();
             this.syncManager.LoadOffersInBackground();

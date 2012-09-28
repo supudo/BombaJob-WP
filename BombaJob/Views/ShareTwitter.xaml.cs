@@ -195,6 +195,7 @@ namespace BombaJob.Views
 
         private void postFinished(RestRequest request, Hammock.RestResponse response, object obj)
         {
+            MessageBox.Show(AppResources.offer_ThankYou);
             NavigationService.GoBack();
         }
     }

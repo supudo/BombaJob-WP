@@ -48,6 +48,9 @@ namespace BombaJob.Utilities.Views
             this.lblCategory.Text = AppResources.offer_Category;
             this.lblFreelance.Text = AppResources.offer_FreelanceYn;
             this.SetLabels(true);
+
+            if (AppSettings.ConfPrivateData)
+                this.txtEmail.Text = AppSettings.ConfPDEmail;
         }
 
         private void SetLabels(bool humanYn)
@@ -124,6 +127,11 @@ namespace BombaJob.Utilities.Views
                 postParams.Add("neg", negativism);
                 postParams.Add("mob_app", "wp");
                 this.syncManager.DoPostOffer(postParams);
+
+                if (AppSettings.ConfPrivateData)
+                    AppSettings.ConfPDEmail = email;
+                else
+                    AppSettings.ConfPDEmail = "";
             }
         }
 

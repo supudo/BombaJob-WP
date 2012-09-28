@@ -30,7 +30,8 @@ namespace BombaJob.Sync
             ServiceOpNewestOffers,
             ServiceOpSearch,
             ServiceOpJobs,
-            ServiceOpPost
+            ServiceOpPost,
+            ServiceOpSendEmail
         }
 
         BackgroundWorker bgWorker;
@@ -88,6 +89,13 @@ namespace BombaJob.Sync
             postArray.Add("freelance", "" + freelance);
             this._networkHelper.InBackground = false;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=searchOffers", postArray);
+        }
+
+        public void DoSendEmail(Dictionary<string, string> postParams)
+        {
+            this.currentOp = ServiceOp.ServiceOpSendEmail;;
+            this._networkHelper.InBackground = false;
+            this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=sendEmailMessage", postParams);
         }
 
         public void LoadOffersInBackground()

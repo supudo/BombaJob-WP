@@ -35,7 +35,12 @@ namespace BombaJob
 
         public void startSync()
         {
-            this.syncManager.StartSync();
+            if (AppSettings.ConfInitSync)
+                this.syncManager.StartSync();
+            else
+            {
+                this.syncManager_SyncComplete(null, new BombaJobEventArgs(false, "", ""));
+            }
         }
 
         void syncManager_SyncComplete(object sender, BombaJobEventArgs e)
