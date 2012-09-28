@@ -637,11 +637,38 @@ namespace BombaJob {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Съобщение.
+        /// </summary>
+        public static string offer_Message {
+            get {
+                return ResourceManager.GetString("offer_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Съобщението ви е празно..
+        /// </summary>
+        public static string offer_Message_Empty {
+            get {
+                return ResourceManager.GetString("offer_Message_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Има нещо изпуснато....
         /// </summary>
         public static string offer_MissingReqFields {
             get {
                 return ResourceManager.GetString("offer_MissingReqFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изпрати съобщение.
+        /// </summary>
+        public static string offer_sendMessage {
+            get {
+                return ResourceManager.GetString("offer_sendMessage", resourceCulture);
             }
         }
         

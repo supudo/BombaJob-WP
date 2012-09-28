@@ -31,7 +31,8 @@ namespace BombaJob.Sync
             ServiceOpSearch,
             ServiceOpJobs,
             ServiceOpPost,
-            ServiceOpSendEmail
+            ServiceOpSendEmail,
+            ServiceOpSendPM
         }
 
         BackgroundWorker bgWorker;
@@ -96,6 +97,13 @@ namespace BombaJob.Sync
             this.currentOp = ServiceOp.ServiceOpSendEmail;;
             this._networkHelper.InBackground = false;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=sendEmailMessage", postParams);
+        }
+
+        public void DoSendPM(Dictionary<string, string> postParams)
+        {
+            this.currentOp = ServiceOp.ServiceOpSendEmail; ;
+            this._networkHelper.InBackground = false;
+            this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postMessage", postParams);
         }
 
         public void LoadOffersInBackground()

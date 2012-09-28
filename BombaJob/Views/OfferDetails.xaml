@@ -53,6 +53,7 @@
         </Grid>
     </Grid>
 
+    <!--
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton 
@@ -77,5 +78,6 @@
                 Click="shareTwitter_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
+    -->
 
 </bj:BombaJobBasePage>

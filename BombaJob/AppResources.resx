@@ -369,4 +369,13 @@
   <data name="share_Email_Desc" xml:space="preserve">
     <value>Изпрати на email...</value>
   </data>
+  <data name="offer_sendMessage" xml:space="preserve">
+    <value>Изпрати съобщение</value>
+  </data>
+  <data name="offer_Message" xml:space="preserve">
+    <value>Съобщение</value>
+  </data>
+  <data name="offer_Message_Empty" xml:space="preserve">
+    <value>Съобщението ви е празно.</value>
+  </data>
 </root>

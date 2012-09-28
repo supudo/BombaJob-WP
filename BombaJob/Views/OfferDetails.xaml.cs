@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
+using Microsoft.Phone.Shell;
 using BombaJob.Database.Models;
 using BombaJob.Sync;
 using BombaJob.Utilities;
@@ -32,7 +33,44 @@ namespace BombaJob.Utilities.Views
         {
             InitializeComponent();
             this.pageTitle.Text = AppResources.appName;
+            this.Loaded += new RoutedEventHandler(OfferDetails_Loaded);
         }
+
+        void OfferDetails_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.BuildApplicationBar();
+        }
+
+        #region Application bar
+        private void BuildApplicationBar()
+        {
+            this.ApplicationBar = new ApplicationBar();
+
+            ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-back.png", UriKind.Relative));
+            appBarButton.Text = "back";
+            appBarButton.Click += new System.EventHandler(back_Click);
+            this.ApplicationBar.Buttons.Add(appBarButton);
+
+            appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-share-email.png", UriKind.Relative));
+            appBarButton.Text = "email";
+            appBarButton.Click += new System.EventHandler(shareEmail_Click);
+            this.ApplicationBar.Buttons.Add(appBarButton);
+
+            appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-share-facebook.png", UriKind.Relative));
+            appBarButton.Text = "facebook";
+            appBarButton.Click += new System.EventHandler(shareFacebook_Click);
+            this.ApplicationBar.Buttons.Add(appBarButton);
+
+            appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-share-twitter.png", UriKind.Relative));
+            appBarButton.Text = "twitter";
+            appBarButton.Click += new System.EventHandler(shareTwitter_Click);
+            this.ApplicationBar.Buttons.Add(appBarButton);
+
+            ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.offer_sendMessage);
+            appBarMenuItem.Click += new System.EventHandler(sendMessage_Click);
+            this.ApplicationBar.MenuItems.Add(appBarMenuItem);
+        }
+        #endregion
 
         #region Screen
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -79,6 +117,18 @@ namespace BombaJob.Utilities.Views
         private void shareTwitter_Click(object sender, EventArgs e)
         {
             this.shareTwitter();
+        }
+
+        private void sendMessage_Click(object sender, EventArgs e)
+        {
+            this.sendPM();
+        }
+        #endregion
+
+        #region Message
+        private void sendPM()
+        {
+            NavigationService.Navigate(new Uri("/Views/SendPM.xaml?oid=" + this.currentOffer.OfferId, UriKind.Relative));
         }
         #endregion
 
