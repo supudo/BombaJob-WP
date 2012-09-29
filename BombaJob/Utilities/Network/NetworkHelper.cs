@@ -44,6 +44,13 @@ namespace BombaJob.Utilities.Network
         #region GET
         public void downloadURL(string url)
         {
+            this.downloadURL(url, false);
+        }
+
+        public void downloadURL(string url, bool inBackground)
+        {
+            this.InBackground = inBackground;
+
             if (this.hasConnection())
                 this.webClient.DownloadStringAsync(new System.Uri(url));
             else

@@ -78,7 +78,6 @@ namespace BombaJob.Sync
         public void DoPostOffer(Dictionary<string, string> postParams)
         {
             this.currentOp = ServiceOp.ServiceOpPost;
-            this._networkHelper.InBackground = false;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postNewJob", postParams);
         }
 
@@ -88,21 +87,18 @@ namespace BombaJob.Sync
             Dictionary<string, string> postArray = new Dictionary<string, string>();
             postArray.Add("keyword", keyword);
             postArray.Add("freelance", "" + freelance);
-            this._networkHelper.InBackground = false;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=searchOffers", postArray);
         }
 
         public void DoSendEmail(Dictionary<string, string> postParams)
         {
-            this.currentOp = ServiceOp.ServiceOpSendEmail;;
-            this._networkHelper.InBackground = false;
+            this.currentOp = ServiceOp.ServiceOpSendEmail;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=sendEmailMessage", postParams);
         }
 
         public void DoSendPM(Dictionary<string, string> postParams)
         {
-            this.currentOp = ServiceOp.ServiceOpSendEmail; ;
-            this._networkHelper.InBackground = false;
+            this.currentOp = ServiceOp.ServiceOpSendEmail;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postMessage", postParams);
         }
 
@@ -120,8 +116,7 @@ namespace BombaJob.Sync
 
         void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this._networkHelper.InBackground = true;
-            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getJobs");
+            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getJobs", true);
         }
         #endregion
 
@@ -129,21 +124,18 @@ namespace BombaJob.Sync
         private void syncTexts()
         {
             this.currentOp = ServiceOp.ServiceOpTexts;
-            this._networkHelper.InBackground = false;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getTextContent");
         }
 
         private void syncCategories()
         {
             this.currentOp = ServiceOp.ServiceOpCategories;
-            this._networkHelper.InBackground = false;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getCategories");
         }
 
         private void syncNewestOffers()
         {
             this.currentOp = ServiceOp.ServiceOpNewestOffers;
-            this._networkHelper.InBackground = false;
             this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getNewJobs");
         }
         #endregion
