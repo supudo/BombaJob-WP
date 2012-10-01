@@ -70,6 +70,31 @@ namespace BombaJob.Utilities.Views
             appBarMenuItem.Click += new System.EventHandler(sendMessage_Click);
             this.ApplicationBar.MenuItems.Add(appBarMenuItem);
         }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void shareEmail_Click(object sender, EventArgs e)
+        {
+            this.shareEmail();
+        }
+
+        private void shareFacebook_Click(object sender, EventArgs e)
+        {
+            this.shareFacebook();
+        }
+
+        private void shareTwitter_Click(object sender, EventArgs e)
+        {
+            this.shareTwitter();
+        }
+
+        private void sendMessage_Click(object sender, EventArgs e)
+        {
+            this.sendPM();
+        }
         #endregion
 
         #region Screen
@@ -97,31 +122,6 @@ namespace BombaJob.Utilities.Views
             }
             else
                 NavigationService.Navigate(new Uri("/Views/Newest.xaml", UriKind.Relative));
-        }
-
-        private void back_Click(object sender, EventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
-        private void shareEmail_Click(object sender, EventArgs e)
-        {
-            this.shareEmail();
-        }
-
-        private void shareFacebook_Click(object sender, EventArgs e)
-        {
-            this.shareFacebook();
-        }
-
-        private void shareTwitter_Click(object sender, EventArgs e)
-        {
-            this.shareTwitter();
-        }
-
-        private void sendMessage_Click(object sender, EventArgs e)
-        {
-            this.sendPM();
         }
         #endregion
 
