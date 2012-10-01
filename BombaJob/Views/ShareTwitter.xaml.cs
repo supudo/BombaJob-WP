@@ -43,13 +43,10 @@ namespace BombaJob.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string oid = "", h = "";
-            if (NavigationContext.QueryString.TryGetValue("oid", out oid) && NavigationContext.QueryString.TryGetValue("h", out h))
+            string oid = "";
+            if (NavigationContext.QueryString.TryGetValue("oid", out oid))
             {
-                int offerID = int.Parse(oid);
-                bool humanYn = bool.Parse(h);
-                AppSettings.LogThis("Offer id = " + offerID);
-                JobOffer jo = App.DbViewModel.GetOffer(offerID);
+                JobOffer jo = App.DbViewModel.GetOffer(int.Parse(oid));
 
                 this.postMessage = "BombaJob.bg - ";
                 this.postMessage += jo.Title + ": http://bombajob.bg/offer/" + jo.OfferId;
@@ -195,8 +192,11 @@ namespace BombaJob.Views
 
         private void postFinished(RestRequest request, Hammock.RestResponse response, object obj)
         {
-            MessageBox.Show(AppResources.offer_ThankYou);
-            NavigationService.GoBack();
+            Dispatcher.BeginInvoke(() =>
+            {
+                //MessageBox.Show(AppResources.offer_ThankYou);
+                NavigationService.GoBack();
+            });
         }
     }
 }

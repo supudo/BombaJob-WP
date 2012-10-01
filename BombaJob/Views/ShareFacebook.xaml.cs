@@ -33,14 +33,9 @@ namespace BombaJob.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string oid = "", h = "";
-            if (NavigationContext.QueryString.TryGetValue("oid", out oid) && NavigationContext.QueryString.TryGetValue("h", out h))
-            {
-                int offerID = int.Parse(oid);
-                bool humanYn = bool.Parse(h);
-                AppSettings.LogThis("Offer id = " + offerID);
-                this.currentOffer = App.DbViewModel.GetOffer(offerID);
-            }
+            string oid = "";
+            if (NavigationContext.QueryString.TryGetValue("oid", out oid))
+                this.currentOffer = App.DbViewModel.GetOffer(int.Parse(oid));
         }
 
         private void wbFacebook_Loaded(object sender, RoutedEventArgs e)
@@ -138,7 +133,10 @@ namespace BombaJob.Views
 
             fb.PostAsync("me/feed", parameters);
 
-            NavigationService.GoBack();
+            Dispatcher.BeginInvoke(() =>
+            {
+                NavigationService.GoBack();
+            });
         }
     }
 }
