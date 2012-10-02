@@ -114,12 +114,6 @@ namespace BombaJob.Views
 
                 var result = (IDictionary<string, object>)args.GetResultData();
                 _lastMessageId = (string)result["id"];
-
-                Dispatcher.BeginInvoke(() =>
-                {
-                    if (MessageBox.Show(AppResources.offer_ThankYou) == MessageBoxResult.OK)
-                        NavigationService.GoBack();
-                });
             };
 
             var parameters = new Dictionary<string, object>();
