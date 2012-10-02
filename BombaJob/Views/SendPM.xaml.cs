@@ -26,6 +26,7 @@ namespace BombaJob.Views
             InitializeComponent();
             this.pageTitle.Text = AppResources.offer_Message;
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string oid = "";
