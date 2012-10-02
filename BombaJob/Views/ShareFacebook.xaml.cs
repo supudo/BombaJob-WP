@@ -100,10 +100,7 @@ namespace BombaJob.Views
         private void postMessage()
         {
             if (this.currentOffer == null)
-            {
-                MessageBox.Show("Enter message.");
-                return;
-            }
+                NavigationService.GoBack();
 
             var fb = new FacebookClient(_accessToken);
 
@@ -120,7 +117,8 @@ namespace BombaJob.Views
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    MessageBox.Show(AppResources.offer_ThankYou);
+                    if (MessageBox.Show(AppResources.offer_ThankYou) == MessageBoxResult.OK)
+                        NavigationService.GoBack();
                 });
             };
 
@@ -135,7 +133,8 @@ namespace BombaJob.Views
 
             Dispatcher.BeginInvoke(() =>
             {
-                NavigationService.GoBack();
+                if (MessageBox.Show(AppResources.offer_ThankYou) == MessageBoxResult.OK)
+                    NavigationService.GoBack();
             });
         }
     }

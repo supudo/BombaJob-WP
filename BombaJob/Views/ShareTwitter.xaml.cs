@@ -194,8 +194,8 @@ namespace BombaJob.Views
         {
             Dispatcher.BeginInvoke(() =>
             {
-                //MessageBox.Show(AppResources.offer_ThankYou);
-                NavigationService.GoBack();
+                if (MessageBox.Show(AppResources.offer_ThankYou) == MessageBoxResult.OK)
+                    NavigationService.GoBack();
             });
         }
     }

@@ -61,7 +61,8 @@ namespace BombaJob.Views
 
         void syncManager_SyncComplete(object sender, BombaJobEventArgs e)
         {
-            NavigationService.GoBack();
+            if (MessageBox.Show(AppResources.offer_ThankYou) == MessageBoxResult.OK)
+                NavigationService.GoBack();
         }
 
         void syncManager_SyncError(object sender, BombaJobEventArgs e)
