@@ -24,6 +24,7 @@ namespace BombaJob.Utilities.Network
         WebClient webClient;
 
         public bool InBackground;
+        private AppSettings.ServiceOp webServiceOp;
 
         #region Constructor
         public NetworkHelper()
@@ -49,7 +50,13 @@ namespace BombaJob.Utilities.Network
 
         public void downloadURL(string url, bool inBackground)
         {
+            this.downloadURL(url, inBackground, 0);
+        }
+
+        public void downloadURL(string url, bool inBackground, AppSettings.ServiceOp serviceOp)
+        {
             this.InBackground = inBackground;
+            this.webServiceOp = serviceOp;
 
             if (this.hasConnection())
                 this.webClient.DownloadStringAsync(new System.Uri(url));
@@ -69,7 +76,7 @@ namespace BombaJob.Utilities.Network
                 if (e.Error != null)
                     DownloadError(this, new BombaJobEventArgs(true, e.Error.Message, ""));
                 else if (this.InBackground)
-                    DownloadInBackgroundComplete(this, new BombaJobEventArgs(false, "", e.Result));
+                    DownloadInBackgroundComplete(this, new BombaJobEventArgs(false, "", e.Result, this.webServiceOp));
                 else
                     DownloadComplete(this, new BombaJobEventArgs(false, "", e.Result));
             });

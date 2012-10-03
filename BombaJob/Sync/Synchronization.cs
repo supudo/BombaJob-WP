@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Xml.Linq;
-using System.Threading;
 using BombaJob.Database.Context;
 using BombaJob.Database.Tables;
 using BombaJob.Utilities.Network;
@@ -22,18 +21,7 @@ namespace BombaJob.Sync
 
         NetworkHelper _networkHelper;
 
-        private ServiceOp currentOp;
-        enum ServiceOp
-        {
-            ServiceOpTexts,
-            ServiceOpCategories,
-            ServiceOpNewestOffers,
-            ServiceOpSearch,
-            ServiceOpJobs,
-            ServiceOpPost,
-            ServiceOpSendEmail,
-            ServiceOpSendPM
-        }
+        private AppSettings.ServiceOp currentOp;
 
         BackgroundWorker bgWorker;
 
@@ -52,19 +40,19 @@ namespace BombaJob.Sync
         {
             switch (this.currentOp)
             {
-                case ServiceOp.ServiceOpTexts:
+                case AppSettings.ServiceOp.ServiceOpTexts:
                     this.doTexts(xmlContent);
                     break;
-                case ServiceOp.ServiceOpCategories:
+                case AppSettings.ServiceOp.ServiceOpCategories:
                     this.doCategories(xmlContent);
                     break;
-                case ServiceOp.ServiceOpNewestOffers:
+                case AppSettings.ServiceOp.ServiceOpNewestOffers:
                     this.doNewestOffers(xmlContent);
                     break;
-                case ServiceOp.ServiceOpSearch:
+                case AppSettings.ServiceOp.ServiceOpSearch:
                     this.doJobOffers(xmlContent);
                     break;
-                case ServiceOp.ServiceOpJobs:
+                case AppSettings.ServiceOp.ServiceOpJobs:
                     this.doJobOffers(xmlContent);
                     break;
                 default:
@@ -77,13 +65,13 @@ namespace BombaJob.Sync
         #region Public
         public void DoPostOffer(Dictionary<string, string> postParams)
         {
-            this.currentOp = ServiceOp.ServiceOpPost;
+            this.currentOp = AppSettings.ServiceOp.ServiceOpPost;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postNewJob", postParams);
         }
 
         public void DoSearch(string keyword, int freelance)
         {
-            this.currentOp = ServiceOp.ServiceOpSearch;
+            this.currentOp = AppSettings.ServiceOp.ServiceOpSearch;
             Dictionary<string, string> postArray = new Dictionary<string, string>();
             postArray.Add("keyword", keyword);
             postArray.Add("freelance", "" + freelance);
@@ -92,18 +80,19 @@ namespace BombaJob.Sync
 
         public void DoSendEmail(Dictionary<string, string> postParams)
         {
-            this.currentOp = ServiceOp.ServiceOpSendEmail;
+            this.currentOp = AppSettings.ServiceOp.ServiceOpSendEmail;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=sendEmailMessage", postParams);
         }
 
         public void DoSendPM(Dictionary<string, string> postParams)
         {
-            this.currentOp = ServiceOp.ServiceOpSendEmail;
+            this.currentOp = AppSettings.ServiceOp.ServiceOpSendEmail;
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postMessage", postParams);
         }
 
         public void LoadOffersInBackground()
         {
+            this.currentOp = AppSettings.ServiceOp.ServiceOpJobs;
             this.bgWorker = new BackgroundWorker();
             RunProcess();
         }
@@ -116,27 +105,46 @@ namespace BombaJob.Sync
 
         void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getJobs", true);
+            switch (this.currentOp)
+            {
+                case AppSettings.ServiceOp.ServiceOpTexts:
+                    this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getTextContent", true, this.currentOp);
+                    break;
+                case AppSettings.ServiceOp.ServiceOpCategories:
+                    this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getCategories", true, this.currentOp);
+                    break;
+                case AppSettings.ServiceOp.ServiceOpNewestOffers:
+                    this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getNewJobs", true, this.currentOp);
+                    break;
+                case AppSettings.ServiceOp.ServiceOpJobs:
+                    this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getJobs", true, this.currentOp);
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
         #region Handle URLs
         private void syncTexts()
         {
-            this.currentOp = ServiceOp.ServiceOpTexts;
-            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getTextContent");
+            this.currentOp = AppSettings.ServiceOp.ServiceOpTexts;
+            this.bgWorker = new BackgroundWorker();
+            RunProcess();
         }
 
         private void syncCategories()
         {
-            this.currentOp = ServiceOp.ServiceOpCategories;
-            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getCategories");
+            this.currentOp = AppSettings.ServiceOp.ServiceOpCategories;
+            this.bgWorker = new BackgroundWorker();
+            RunProcess();
         }
 
         private void syncNewestOffers()
         {
-            this.currentOp = ServiceOp.ServiceOpNewestOffers;
-            this._networkHelper.downloadURL(AppSettings.ServicesURL + "?action=getNewJobs");
+            this.currentOp = AppSettings.ServiceOp.ServiceOpNewestOffers;
+            this.bgWorker = new BackgroundWorker();
+            RunProcess();
         }
         #endregion
 
@@ -159,7 +167,7 @@ namespace BombaJob.Sync
         {
             if (!e.IsError)
             {
-                this.currentOp = ServiceOp.ServiceOpJobs;
+                this.currentOp = e.ServiceOp;
                 this.dispatchDownload(e.XmlContent);
             }
         }
@@ -273,7 +281,7 @@ namespace BombaJob.Sync
             {
                 AppSettings.LogThis("Synchronization - doJobOffers - " + e.ToString());
             }
-            if (this.currentOp != ServiceOp.ServiceOpJobs)
+            if (this.currentOp != AppSettings.ServiceOp.ServiceOpJobs)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
