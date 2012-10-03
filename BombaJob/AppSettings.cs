@@ -65,6 +65,7 @@ namespace BombaJob
         public static string FacebookAppID = "";
         public static string FacebookAppSecret = "";
 
+        public static string TwitterOAuth = "https://api.twitter.com/oauth";
         public static string TwitterRequestTokenUri = "https://api.twitter.com/oauth/request_token";
         public static string TwitterAuthorizeUri = "https://api.twitter.com/oauth/authorize";
         public static string TwitterAccessTokenUri = "https://api.twitter.com/oauth/access_token";

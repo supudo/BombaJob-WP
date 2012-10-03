@@ -56,6 +56,17 @@ namespace BombaJob.Utilities.Views
             appBarButton.Click += new System.EventHandler(shareEmail_Click);
             this.ApplicationBar.Buttons.Add(appBarButton);
 
+            appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-share.png", UriKind.Relative));
+            appBarButton.Text = "share";
+            appBarButton.Click += new System.EventHandler(share_Click);
+            this.ApplicationBar.Buttons.Add(appBarButton);
+
+            appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-pm.png", UriKind.Relative));
+            appBarButton.Text = AppResources.offer_sendMessage;
+            appBarButton.Click += new System.EventHandler(sendMessage_Click);
+            this.ApplicationBar.Buttons.Add(appBarButton);
+
+            /*
             appBarButton = new ApplicationBarIconButton(new Uri("images/menu/tb-share-facebook.png", UriKind.Relative));
             appBarButton.Text = "facebook";
             appBarButton.Click += new System.EventHandler(shareFacebook_Click);
@@ -69,11 +80,17 @@ namespace BombaJob.Utilities.Views
             ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.offer_sendMessage);
             appBarMenuItem.Click += new System.EventHandler(sendMessage_Click);
             this.ApplicationBar.MenuItems.Add(appBarMenuItem);
+             */
         }
 
         private void back_Click(object sender, EventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void share_Click(object sender, EventArgs e)
+        {
+            this.share();
         }
 
         private void shareEmail_Click(object sender, EventArgs e)
@@ -230,6 +247,20 @@ namespace BombaJob.Utilities.Views
         }
         #endregion
 
+        #region Share
+        private void share()
+        {
+            string msg = "";
+            msg += this.currentOffer.Positivism;
+
+            ShareLinkTask shareLinkTask = new ShareLinkTask();
+            shareLinkTask.Title = this.currentOffer.Title;
+            shareLinkTask.LinkUri = new Uri("http://www.bombajob.bg/offer/" + this.currentOffer.OfferId, UriKind.Absolute);
+            shareLinkTask.Message = this.currentOffer.Positivism;
+            shareLinkTask.Show();
+        }
+        #endregion
+
         #region Facebook
         private void shareFacebook()
         {
@@ -260,8 +291,8 @@ namespace BombaJob.Utilities.Views
             shareLinkTask.Message = this.currentOffer.Title;
             shareLinkTask.Message = msg;
             shareLinkTask.Show();
-             */
-            NavigationService.Navigate(new Uri("/Views/ShareTwitter.xaml?oid=" + this.currentOffer.OfferId, UriKind.Relative));
+            */
+            NavigationService.Navigate(new Uri("/Views/ShareTwitter2.xaml?oid=" + this.currentOffer.OfferId, UriKind.Relative));
         }
         #endregion
     }

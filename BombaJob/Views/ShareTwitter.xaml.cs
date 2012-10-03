@@ -167,7 +167,7 @@ namespace BombaJob.Views
                 ConsumerSecret = AppSettings.TwitterConsumerKeySecret,
                 Token = this.accessToken,
                 TokenSecret = this.accessTokenSecret,
-                Version = "1.0"
+                Version =  AppSettings.TwitterOAuthVersion
             };
 
             var restClient = new RestClient
