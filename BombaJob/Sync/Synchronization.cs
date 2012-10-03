@@ -167,7 +167,8 @@ namespace BombaJob.Sync
         {
             if (!e.IsError)
             {
-                this.currentOp = e.ServiceOp;
+                if (e.ServiceOp > 0)
+                    this.currentOp = e.ServiceOp;
                 this.dispatchDownload(e.XmlContent);
             }
         }
