@@ -56,7 +56,7 @@ namespace BombaJob
         public static string DBConnectionString = "Data Source=isostore:/BombaJob.sdf";
 
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
-        public static bool InDebug = true;
+        public static bool InDebug = false;
 
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 

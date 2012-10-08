@@ -273,8 +273,6 @@ namespace BombaJob.Database.Tables
             {
                 NotifyPropertyChanging("Category");
                 _category.Entity = value;
-                if (value != null)
-                    _categoryId = value.CategoryId;
                 NotifyPropertyChanging("Category");
             }
         }
