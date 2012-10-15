@@ -79,7 +79,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Начална синхронизация.
+        ///   Looks up a localized string similar to Initial Synchronization.
         /// </summary>
         public static string conf_InitSync {
             get {
@@ -88,7 +88,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Онлайн търсене.
+        ///   Looks up a localized string similar to Online Search.
         /// </summary>
         public static string conf_OnlineSearch {
             get {
@@ -97,7 +97,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Запази лични данни.
+        ///   Looks up a localized string similar to Remember private data.
         /// </summary>
         public static string conf_PrivateData {
             get {
@@ -106,7 +106,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Показвай категориите.
+        ///   Looks up a localized string similar to Show Categories.
         /// </summary>
         public static string conf_ShowCategories {
             get {
@@ -115,7 +115,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to В момента няма интернет връзка. Опитайте по-късно пак..
+        ///   Looks up a localized string similar to No Internet connection at the moment. Try again later..
         /// </summary>
         public static string error_NoInternet {
             get {
@@ -124,7 +124,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Навсякъде.
+        ///   Looks up a localized string similar to Everywhere.
         /// </summary>
         public static string freelance_all {
             get {
@@ -133,7 +133,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Без Проект/Freelance.
+        ///   Looks up a localized string similar to No Project/Freelance.
         /// </summary>
         public static string freelance_no {
             get {
@@ -142,7 +142,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Само Проект/Freelance.
+        ///   Looks up a localized string similar to Only Project/Freelance.
         /// </summary>
         public static string freelance_only {
             get {
@@ -151,7 +151,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Това действие ще затвори текущото приложение и ще отвори Internet Explorer. Сигурни ли сте?.
+        ///   Looks up a localized string similar to This will close the app and will open IE. Are you sure?.
         /// </summary>
         public static string linkClicked {
             get {
@@ -160,7 +160,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Зареждане....
+        ///   Looks up a localized string similar to Loading....
         /// </summary>
         public static string loading {
             get {
@@ -169,7 +169,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to За BombJob.bg.
+        ///   Looks up a localized string similar to About BombaJob.bg.
         /// </summary>
         public static string menu_About {
             get {
@@ -178,7 +178,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категории.
+        ///   Looks up a localized string similar to Categories.
         /// </summary>
         public static string menu_Categories {
             get {
@@ -187,7 +187,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оферти.
+        ///   Looks up a localized string similar to Offers.
         /// </summary>
         public static string menu_Jobs {
             get {
@@ -196,7 +196,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Нови.
+        ///   Looks up a localized string similar to Newest.
         /// </summary>
         public static string menu_Newest {
             get {
@@ -205,7 +205,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оферти.
+        ///   Looks up a localized string similar to Offers.
         /// </summary>
         public static string menu_Offers {
             get {
@@ -214,7 +214,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Хора.
+        ///   Looks up a localized string similar to People.
         /// </summary>
         public static string menu_People {
             get {
@@ -223,7 +223,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Публикувай.
+        ///   Looks up a localized string similar to Post.
         /// </summary>
         public static string menu_Post {
             get {
@@ -232,7 +232,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Търси.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string menu_Search {
             get {
@@ -241,7 +241,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Настройки.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string menu_Settings {
             get {
@@ -250,7 +250,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Синхронизация.
+        ///   Looks up a localized string similar to Synchronization.
         /// </summary>
         public static string menu_Sync {
             get {
@@ -259,7 +259,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Януари.
+        ///   Looks up a localized string similar to January.
         /// </summary>
         public static string monthFull_1 {
             get {
@@ -268,7 +268,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Октомври.
+        ///   Looks up a localized string similar to October.
         /// </summary>
         public static string monthFull_10 {
             get {
@@ -277,7 +277,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ноември.
+        ///   Looks up a localized string similar to November.
         /// </summary>
         public static string monthFull_11 {
             get {
@@ -286,7 +286,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Декември.
+        ///   Looks up a localized string similar to December.
         /// </summary>
         public static string monthFull_12 {
             get {
@@ -295,7 +295,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Февруари.
+        ///   Looks up a localized string similar to February.
         /// </summary>
         public static string monthFull_2 {
             get {
@@ -304,7 +304,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Март.
+        ///   Looks up a localized string similar to March.
         /// </summary>
         public static string monthFull_3 {
             get {
@@ -313,7 +313,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Април.
+        ///   Looks up a localized string similar to April.
         /// </summary>
         public static string monthFull_4 {
             get {
@@ -322,7 +322,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Май.
+        ///   Looks up a localized string similar to May.
         /// </summary>
         public static string monthFull_5 {
             get {
@@ -331,7 +331,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Юни.
+        ///   Looks up a localized string similar to June.
         /// </summary>
         public static string monthFull_6 {
             get {
@@ -340,7 +340,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Юли.
+        ///   Looks up a localized string similar to July.
         /// </summary>
         public static string monthFull_7 {
             get {
@@ -349,7 +349,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Август.
+        ///   Looks up a localized string similar to August.
         /// </summary>
         public static string monthFull_8 {
             get {
@@ -358,7 +358,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Септември.
+        ///   Looks up a localized string similar to September.
         /// </summary>
         public static string monthFull_9 {
             get {
@@ -367,7 +367,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Яну.
+        ///   Looks up a localized string similar to Jan.
         /// </summary>
         public static string monthShort_1 {
             get {
@@ -376,7 +376,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Окт.
+        ///   Looks up a localized string similar to Oct.
         /// </summary>
         public static string monthShort_10 {
             get {
@@ -385,7 +385,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ное.
+        ///   Looks up a localized string similar to Nov.
         /// </summary>
         public static string monthShort_11 {
             get {
@@ -394,7 +394,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дек.
+        ///   Looks up a localized string similar to Dec.
         /// </summary>
         public static string monthShort_12 {
             get {
@@ -403,7 +403,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Фев.
+        ///   Looks up a localized string similar to Feb.
         /// </summary>
         public static string monthShort_2 {
             get {
@@ -412,7 +412,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Март.
+        ///   Looks up a localized string similar to Mar.
         /// </summary>
         public static string monthShort_3 {
             get {
@@ -421,7 +421,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Апр.
+        ///   Looks up a localized string similar to Apr.
         /// </summary>
         public static string monthShort_4 {
             get {
@@ -430,7 +430,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Май.
+        ///   Looks up a localized string similar to May.
         /// </summary>
         public static string monthShort_5 {
             get {
@@ -439,7 +439,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Юни.
+        ///   Looks up a localized string similar to Jun.
         /// </summary>
         public static string monthShort_6 {
             get {
@@ -448,7 +448,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Юли.
+        ///   Looks up a localized string similar to Jul.
         /// </summary>
         public static string monthShort_7 {
             get {
@@ -457,7 +457,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Авг.
+        ///   Looks up a localized string similar to Aug.
         /// </summary>
         public static string monthShort_8 {
             get {
@@ -466,7 +466,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Септ.
+        ///   Looks up a localized string similar to Sept.
         /// </summary>
         public static string monthShort_9 {
             get {
@@ -475,7 +475,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не.
+        ///   Looks up a localized string similar to No.
         /// </summary>
         public static string no {
             get {
@@ -484,7 +484,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Няма категории..
+        ///   Looks up a localized string similar to No Categories..
         /// </summary>
         public static string noCategories {
             get {
@@ -493,7 +493,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Няма оферти..
+        ///   Looks up a localized string similar to No Offers..
         /// </summary>
         public static string noOffers {
             get {
@@ -502,7 +502,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Бум!.
+        ///   Looks up a localized string similar to Boom!.
         /// </summary>
         public static string offer_Boom {
             get {
@@ -511,7 +511,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория:.
+        ///   Looks up a localized string similar to Category:.
         /// </summary>
         public static string offer_Category {
             get {
@@ -520,7 +520,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Работя в:.
+        ///   Looks up a localized string similar to I work in:.
         /// </summary>
         public static string offer_category_title {
             get {
@@ -529,7 +529,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email за връзка:.
+        ///   Looks up a localized string similar to Email:.
         /// </summary>
         public static string offer_Company_Email {
             get {
@@ -538,7 +538,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Предимства на фирмата:.
+        ///   Looks up a localized string similar to Company advantages:.
         /// </summary>
         public static string offer_Company_Negativ {
             get {
@@ -547,7 +547,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Описание на позицията:.
+        ///   Looks up a localized string similar to Position  description:.
         /// </summary>
         public static string offer_Company_Positiv {
             get {
@@ -556,7 +556,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Заглавие на позицията:.
+        ///   Looks up a localized string similar to Position title:.
         /// </summary>
         public static string offer_Company_Title {
             get {
@@ -565,7 +565,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проект/Freelance:.
+        ///   Looks up a localized string similar to Project/Freelance:.
         /// </summary>
         public static string offer_FreelanceYn {
             get {
@@ -574,7 +574,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вашият email:.
+        ///   Looks up a localized string similar to Your email:.
         /// </summary>
         public static string offer_Human_Email {
             get {
@@ -583,7 +583,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Умения:.
+        ///   Looks up a localized string similar to Skills:.
         /// </summary>
         public static string offer_Human_Negativ {
             get {
@@ -592,7 +592,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проблем:.
+        ///   Looks up a localized string similar to Problems:.
         /// </summary>
         public static string offer_Human_Positiv {
             get {
@@ -601,7 +601,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Заглавие на резюмето ви:.
+        ///   Looks up a localized string similar to Title of your resume:.
         /// </summary>
         public static string offer_Human_Title {
             get {
@@ -610,7 +610,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Фирма.
+        ///   Looks up a localized string similar to Company.
         /// </summary>
         public static string offer_iam_company {
             get {
@@ -619,7 +619,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Човек.
+        ///   Looks up a localized string similar to Human.
         /// </summary>
         public static string offer_iam_human {
             get {
@@ -628,7 +628,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аз съм.
+        ///   Looks up a localized string similar to I am.
         /// </summary>
         public static string offer_iam_title {
             get {
@@ -637,7 +637,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Съобщение.
+        ///   Looks up a localized string similar to Message.
         /// </summary>
         public static string offer_Message {
             get {
@@ -646,7 +646,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Съобщението ви е празно..
+        ///   Looks up a localized string similar to Your message is empty..
         /// </summary>
         public static string offer_Message_Empty {
             get {
@@ -655,7 +655,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Има нещо изпуснато....
+        ///   Looks up a localized string similar to There is something missing....
         /// </summary>
         public static string offer_MissingReqFields {
             get {
@@ -664,7 +664,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Изпрати съобщение.
+        ///   Looks up a localized string similar to Send message.
         /// </summary>
         public static string offer_sendMessage {
             get {
@@ -673,7 +673,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Благодарим ви!.
+        ///   Looks up a localized string similar to Thank You!.
         /// </summary>
         public static string offer_ThankYou {
             get {
@@ -682,7 +682,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оферти:.
+        ///   Looks up a localized string similar to Offers:.
         /// </summary>
         public static string offers {
             get {
@@ -691,7 +691,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Затвори.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string popup_Cancel {
             get {
@@ -700,7 +700,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ОК.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         public static string popup_OK {
             get {
@@ -709,7 +709,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проект/Freelance.
+        ///   Looks up a localized string similar to Project/Freelance.
         /// </summary>
         public static string search_Freelance {
             get {
@@ -718,7 +718,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Резултати.
+        ///   Looks up a localized string similar to Results.
         /// </summary>
         public static string search_Results {
             get {
@@ -727,7 +727,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Търси.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string search_Search {
             get {
@@ -736,7 +736,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Изпрати на email....
+        ///   Looks up a localized string similar to Send to email....
         /// </summary>
         public static string share_Email_Desc {
             get {
@@ -745,7 +745,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BombaJob.bg - виж тази обява.
+        ///   Looks up a localized string similar to BombaJob.bg - check that offer.
         /// </summary>
         public static string share_Email_Subject {
             get {
@@ -754,7 +754,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ф.
+        ///   Looks up a localized string similar to C.
         /// </summary>
         public static string shortCompany {
             get {
@@ -763,7 +763,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ч.
+        ///   Looks up a localized string similar to H.
         /// </summary>
         public static string shortHuman {
             get {
@@ -772,7 +772,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Понеделник.
+        ///   Looks up a localized string similar to Monday.
         /// </summary>
         public static string weekday_1 {
             get {
@@ -781,7 +781,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вторник.
+        ///   Looks up a localized string similar to Tuesday.
         /// </summary>
         public static string weekday_2 {
             get {
@@ -790,7 +790,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сряда.
+        ///   Looks up a localized string similar to Wednesday.
         /// </summary>
         public static string weekday_3 {
             get {
@@ -799,7 +799,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Четвъртък.
+        ///   Looks up a localized string similar to Thursday.
         /// </summary>
         public static string weekday_4 {
             get {
@@ -808,7 +808,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Петък.
+        ///   Looks up a localized string similar to Friday.
         /// </summary>
         public static string weekday_5 {
             get {
@@ -817,7 +817,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Събота.
+        ///   Looks up a localized string similar to Saturday.
         /// </summary>
         public static string weekday_6 {
             get {
@@ -826,7 +826,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Неделя.
+        ///   Looks up a localized string similar to Sunday.
         /// </summary>
         public static string weekday_7 {
             get {
@@ -835,7 +835,7 @@ namespace BombaJob {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string yes {
             get {
